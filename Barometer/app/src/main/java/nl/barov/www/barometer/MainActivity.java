@@ -1,6 +1,8 @@
 package nl.barov.www.barometer;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -8,6 +10,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import nl.barov.www.barometer.list.CourseListActivity;
 
@@ -22,13 +25,19 @@ public class MainActivity extends AppCompatActivity {
 
         Button contentButton = (Button) findViewById(R.id.content_button);
 
+        // HAAL SHAREDPREFENCES OP EN SET NAAM
+        TextView showText = (TextView) findViewById(R.id.gebruiker);
+        SharedPreferences sharedpref = getSharedPreferences(getString(R.string.gebruikers_naam), Context.MODE_PRIVATE);
+        String name = sharedpref.getString(getString(R.string.gebruikers_naam), "");
+        showText.setText(name);
+
+
         contentButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 launchCourseListActivity();
             }
         });
-
     }
 
     private void launchCourseListActivity() {
