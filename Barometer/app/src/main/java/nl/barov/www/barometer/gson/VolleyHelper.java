@@ -3,6 +3,7 @@ package nl.barov.www.barometer.gson;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.util.LruCache;
+
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.ImageLoader;

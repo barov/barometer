@@ -12,4 +12,22 @@
     tools:context="nl.barov.www.barometer.LoginActivity"
     tools:showIn="@layout/activity_login">
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="LOGIN KUT"
+        android:id="@+id/submit_button"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:text="GEBRUIKERSNAAM KUT"
+        android:ems="10"
+        android:id="@+id/input_naam"
+        android:layout_above="@+id/submit_button"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="80dp" />
 </RelativeLayout>
