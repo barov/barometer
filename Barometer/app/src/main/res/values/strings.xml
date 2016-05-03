@@ -5,4 +5,5 @@
     <string name="sign_in">sing_in</string>
     <string name="title_activity_login">LoginActivity</string>
     <string name="gebruikers_naam">gebruikersnaam</string>
+    <string name="title_course_list_activity">CourseListActivity</string>
 </resources>

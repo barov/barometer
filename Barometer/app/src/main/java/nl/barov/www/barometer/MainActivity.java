@@ -1,10 +1,15 @@
 package nl.barov.www.barometer;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+
+import nl.barov.www.barometer.list.CourseListActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -14,6 +19,21 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        Button contentButton = (Button) findViewById(R.id.content_button);
+
+        contentButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                launchCourseListActivity();
+            }
+        });
+
+    }
+
+    private void launchCourseListActivity() {
+        Intent intent = new Intent(MainActivity.this, CourseListActivity.class);
+        startActivity(intent);
     }
 
     @Override

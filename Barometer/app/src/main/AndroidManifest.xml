@@ -28,6 +28,11 @@
             android:name=".LoginActivity"
             android:label="@string/title_activity_login"
             android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+        android:name="nl.barov.www.barometer.list.CourseListActivity"
+        android:label="@string/title_course_list_activity"
+        android:theme="@style/AppTheme.NoActionBar" />
+
     </application>
 
 </manifest>
