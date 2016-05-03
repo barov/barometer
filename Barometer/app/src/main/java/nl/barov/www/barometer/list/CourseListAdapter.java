@@ -12,9 +12,6 @@ import java.util.List;
 import nl.barov.www.barometer.R;
 import nl.barov.www.barometer.models.Course;
 
-/**
- * Created by Tuncay on 3/05/2016.
- */
 public class CourseListAdapter extends ArrayAdapter<Course> {
 
     public CourseListAdapter(Context context, int resource, List<Course> objects){
