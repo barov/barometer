@@ -12,6 +12,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.util.Calendar;
+import java.util.Date;
+
 import nl.barov.www.barometer.list.CourseListActivity;
 
 public class MainActivity extends AppCompatActivity {
@@ -31,6 +34,22 @@ public class MainActivity extends AppCompatActivity {
         String name = sharedpref.getString(getString(R.string.gebruikers_naam), "");
         showText.setText(name);
 
+        // TOON PERIODE & JAAR
+        TextView periode = (TextView) findViewById(R.id.periode);
+        TextView jaar = (TextView) findViewById(R.id.schooljaar);
+
+        Calendar cal = Calendar.getInstance();
+        int week =  cal.get(Calendar.WEEK_OF_YEAR);
+        int year =  cal.get(Calendar.YEAR);
+
+        if ((week >= 36) && ( week <= 46)){periode.setText("Periode 1");}
+        else if((week >= 47) && ( week <= 5)){periode.setText("Periode 2");}
+        else if((week >= 6) && ( week <= 16)){periode.setText("Periode 3");}
+        else if((week >= 17) && ( week <= 28)){periode.setText("Periode 4");}
+        else if((week >= 29) && ( week <= 35)){periode.setText("Zomervakantie");}
+
+        if((week >= 36 && (week <= 53))){jaar.setText(String.valueOf(year) + " / " +String.valueOf(year + 1));}
+        else if ((week >= 1 && (week <= 36 ))){jaar.setText(String.valueOf(year - 1) + " / " +String.valueOf(year));}
 
         contentButton.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -26,16 +26,14 @@ import nl.barov.www.barometer.models.Course;
 public class SplashScreenActivity extends AppCompatActivity {
 
     private static int SPLASH_SCREEN_TIME = 3000;
-    private static String mGebruikersNaam;
-    private static String gebruikersnaam;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        // FULLSCREEN SPLASHSCREEN ALTIJD VOOR SETCONTENTVIEW
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         setContentView(R.layout.activity_splash_screen);
 
@@ -44,31 +42,28 @@ public class SplashScreenActivity extends AppCompatActivity {
         Animation myFadeInAnimation_1500 = AnimationUtils.loadAnimation(this, R.anim.fadein_1500);
         logo_hsleiden.startAnimation(myFadeInAnimation_1500);
 
+        // CONTROLEER ALS DE GEBRUIKER INGELOGD IS
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                // This method will be executed once the timer is over
-                //Getting the sharedPref voor Signing in
+                // HAAL LOGIN SHAREDPREFENCES OP
                 SharedPreferences sharedPref = getSharedPreferences(getString(R.string.sign_in), MODE_PRIVATE);
 
-                //Getting the status
+                // HAAL DE STATUS OP
                 String key_check = getString(R.string.sign_in);
                 String ingelogd = sharedPref.getString(getString(R.string.sign_in), key_check);
                 Log.d("Ingelogd", ingelogd);
 
-                //Checking if signed in
+                // CHECK ALS GEBRUIKER INGELOGD IS
                 if (ingelogd.equals("ja")) {
-                    //Exectued if signed in
+                    // UITVOEREN ALS INGELOGD
                     Intent intent = new Intent(SplashScreenActivity.this, MainActivity.class);
                     startActivity(intent);
                 } else {
-                    //Exectued if not signed in
+                    // UITVOEREN ALS DE GEBRUIKER NIET INGELOGD IS
                     Intent i = new Intent(SplashScreenActivity.this, LoginActivity.class);
                     startActivity(i);
-                    Log.d("INGELOGD", "NEE");
                 }
-
-                // close this activity
                 finish();
             }
         }, SPLASH_SCREEN_TIME);
