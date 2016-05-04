@@ -27,12 +27,15 @@
         <activity
             android:name=".LoginActivity"
             android:label="@string/title_activity_login"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
-        android:name="nl.barov.www.barometer.list.CourseListActivity"
-        android:label="@string/title_course_list_activity"
-        android:theme="@style/AppTheme.NoActionBar" />
-
+            android:name=".list.CourseListActivity"
+            android:label="@string/title_course_list_activity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".InstellingenActivity"
+            android:label="@string/title_activity_instellingen"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
