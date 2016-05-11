@@ -44,11 +44,7 @@ public class PieChartActivity extends AppCompatActivity {
         DatabaseHelper dbHelper = DatabaseHelper.getHelper(getApplicationContext());
 
         // Set the cursor (items fetcher)
-        Cursor rsCourse = dbHelper.query(DatabaseInfo.CourseTables.COURSE, new String[]{"*"}, null, null, null, null,  DatabaseInfo.CourseColumn.PERIOD + " DESC");
-
-        // Get the amount of return
-        String array[] = new String[rsCourse.getCount()];
-        int i = 0;
+        Cursor rsCourse = dbHelper.query(DatabaseInfo.CourseTables.COURSE, new String[]{"*"}, "grade>=?", new String[]{"5.5"}, null, null, null);
 
         int count = 0;
 
@@ -59,12 +55,8 @@ public class PieChartActivity extends AppCompatActivity {
             int ects = rsCourse.getInt(rsCourse.getColumnIndex("ects"));
             count = count + ects;
             // Add to the listview
-            array[i] = rsCourse.getString(0);
-            i++;
             rsCourse.moveToNext();
         }
-
-        Log.d("Aantal puntjes", String.valueOf(count));
 
         setData(count);
 

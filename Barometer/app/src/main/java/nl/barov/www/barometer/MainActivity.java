@@ -3,6 +3,7 @@ package nl.barov.www.barometer;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -15,6 +16,8 @@ import android.widget.TextView;
 import java.util.Calendar;
 import java.util.Date;
 
+import nl.barov.www.barometer.database.DatabaseHelper;
+import nl.barov.www.barometer.database.DatabaseInfo;
 import nl.barov.www.barometer.list.CourseListActivity;
 
 public class MainActivity extends AppCompatActivity {
@@ -51,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
         if((week >= 36 && (week <= 53))){jaar.setText(String.valueOf(year) + " / " +String.valueOf(year + 1));}
         else if ((week >= 1 && (week <= 36 ))){jaar.setText(String.valueOf(year - 1) + " / " +String.valueOf(year));}
 
+        assert contentButton != null;
         contentButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -61,12 +65,37 @@ public class MainActivity extends AppCompatActivity {
         // PIECHARTACTIVITY
         Button overzichtButton = (Button) findViewById(R.id.overzicht);
 
+        assert overzichtButton != null;
         overzichtButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(MainActivity.this, PieChartActivity.class));
             }
         });
+
+        //AANTAL STUDIEPUNTEN TEXTVIEW
+        TextView studiepunten = (TextView) findViewById(R.id.punten);
+
+        //BEREKENEN AANTAL STUDIEPUNTEN
+        DatabaseHelper dbHelper = DatabaseHelper.getHelper(getApplicationContext());
+
+        // Set the cursor (items fetcher)
+        Cursor rsCourse = dbHelper.query(DatabaseInfo.CourseTables.COURSE, new String[]{"*"}, "grade>=?", new String[]{"5.5"}, null, null, null);
+
+        int count = 0;
+
+        rsCourse.moveToFirst();
+
+        // For all the items we get in the return
+        while (!rsCourse.isAfterLast()) {
+            int ects = rsCourse.getInt(rsCourse.getColumnIndex("ects"));
+            count = count + ects;
+            // Add to the listview
+            rsCourse.moveToNext();
+        }
+
+        //SETTING THE STUDYPOINTSS
+        studiepunten.setText(String.valueOf(count));
     }
 
     private void launchCourseListActivity() {
