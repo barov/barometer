@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="nl.barov.www.barometer">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -11,6 +13,10 @@
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".SplashScreenActivity"
+            android:label="@string/title_activity_splash_screen"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -19,8 +25,16 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".SplashScreenActivity"
-            android:label="@string/title_activity_splash_screen"
+            android:name=".LoginActivity"
+            android:label="@string/title_activity_login"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".list.CourseListActivity"
+            android:label="@string/title_course_list_activity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".InstellingenActivity"
+            android:label="@string/title_activity_instellingen"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
