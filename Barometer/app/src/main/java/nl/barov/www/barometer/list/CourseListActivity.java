@@ -36,6 +36,7 @@ public class CourseListActivity extends AppCompatActivity {
                                              public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
                                                  Toast t = Toast.makeText(CourseListActivity.this,"Click" + position, Toast.LENGTH_LONG);
                                                  t.show();
+
                                              }
                                          }
         );
