@@ -1,24 +1,109 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="nl.barov.www.barometer.MainActivity"
-    tools:showIn="@layout/activity_main">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:orientation="vertical"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:paddingBottom="@dimen/activity_vertical_margin"
+android:paddingLeft="40dp"
+android:paddingRight="40dp"
+android:paddingTop="40dp"
+app:layout_behavior="@string/appbar_scrolling_view_behavior"
+tools:context="nl.barov.www.barometer.MainActivity"
+tools:showIn="@layout/activity_main">
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="LIJST"
-        android:id="@+id/content_button"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="108dp" />
+<LinearLayout
+android:orientation="vertical"
+android:layout_marginLeft="30dp"
+android:layout_marginRight="30dp"
+android:layout_width="match_parent"
+android:layout_height="match_parent">
 
-</RelativeLayout>
+<ImageView
+android:src="@drawable/logobarometer"
+android:layout_width="match_parent"
+android:layout_marginBottom="20dp"
+android:layout_height="150dp" />
+
+<LinearLayout
+android:orientation="horizontal"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content">
+
+<TextView
+android:text="Hallo, "
+android:layout_width="wrap_content"
+android:layout_height="wrap_content" />
+<TextView
+android:id="@+id/gebruiker"
+android:textStyle="bold"
+android:text="Gebruikernaam"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content" />
+</LinearLayout>
+
+<TextView
+android:id="@+id/schooljaar"
+android:text="Schooljaar"
+android:layout_width="match_parent"
+android:layout_height="wrap_content" />
+
+<TextView
+android:id="@+id/periode"
+android:text="periode"
+android:layout_width="match_parent"
+android:layout_height="wrap_content" />
+
+<TextView
+android:id="@+id/punten"
+android:textSize="30sp"
+android:textAlignment="center"
+android:text="57"
+android:layout_width="match_parent"
+android:layout_height="wrap_content" />
+
+<TextView
+android:layout_marginTop="5dp"
+android:textAlignment="center"
+android:text="Studiepunten"
+android:layout_width="match_parent"
+android:layout_height="wrap_content" />
+
+<LinearLayout
+android:orientation="horizontal"
+android:layout_marginTop="20dp"
+android:layout_marginBottom="10dp"
+android:layout_width="match_parent"
+android:layout_height="wrap_content">
+
+<Button
+android:id="@+id/content_button"
+android:layout_weight="1"
+android:textColor="@color/white"
+android:background="@color/colorPrimary"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:layout_marginRight="5dp"
+android:text="Vakken" />
+
+<Button
+android:id="@+id/overzicht"
+android:layout_weight="1"
+android:layout_marginLeft="5dp"
+android:textColor="@color/white"
+android:background="@color/colorPrimary"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:text="Overzicht" />
+</LinearLayout>
+
+<TextView
+android:layout_marginTop="20dp"
+android:id="@+id/advies"
+android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum at."
+android:layout_width="wrap_content"
+android:layout_height="wrap_content" />
+</LinearLayout>
+
+</LinearLayout>
