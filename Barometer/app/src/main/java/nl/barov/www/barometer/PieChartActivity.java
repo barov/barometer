@@ -1,5 +1,6 @@
 package nl.barov.www.barometer;
 
+import android.content.ContentValues;
 import android.database.Cursor;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -41,7 +42,7 @@ public class PieChartActivity extends AppCompatActivity {
         mChart.setTransparentCircleColor(Color.rgb(130, 130, 130));
         mChart.animateY(1400, Easing.EasingOption.EaseInOutQuad);
 
-        DatabaseHelper dbHelper = DatabaseHelper.getHelper(getApplicationContext());
+        final DatabaseHelper dbHelper = DatabaseHelper.getHelper(getApplicationContext());
 
         // Set the cursor (items fetcher)
         Cursor rsCourse = dbHelper.query(DatabaseInfo.CourseTables.COURSE, new String[]{"*"}, "grade>=?", new String[]{"5.5"}, null, null, null);
@@ -65,11 +66,9 @@ public class PieChartActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (currentEcts < MAX_ECTS) {
-                    setData(currentEcts += 2);
-                } else {
-                    setData(currentEcts = 0);
-                }
+                ContentValues newValues = new ContentValues();
+                newValues.put("grade", "9");
+                dbHelper.update(DatabaseInfo.CourseTables.COURSE, newValues, "name=?", new String[]{"IPROV"});
             }
         });
 
