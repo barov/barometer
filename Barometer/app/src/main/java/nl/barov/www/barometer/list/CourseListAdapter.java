@@ -34,7 +34,7 @@ public class CourseListAdapter extends ArrayAdapter<Course> {
         }
         Course cm = getItem(position);
         vh.name.setText(cm.name);
-        vh.code.setText(cm.ects);
+        vh.code.setText(cm.grade);
         return convertView;
     }
 
