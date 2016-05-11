@@ -57,6 +57,16 @@ public class MainActivity extends AppCompatActivity {
                 launchCourseListActivity();
             }
         });
+
+        // PIECHARTACTIVITY
+        Button overzichtButton = (Button) findViewById(R.id.overzicht);
+
+        overzichtButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, PieChartActivity.class));
+            }
+        });
     }
 
     private void launchCourseListActivity() {
