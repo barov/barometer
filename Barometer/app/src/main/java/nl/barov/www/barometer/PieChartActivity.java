@@ -1,5 +1,6 @@
 package nl.barov.www.barometer;
 
+import android.database.Cursor;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -16,6 +17,10 @@ import com.github.mikephil.charting.data.PieDataSet;
 import java.util.ArrayList;
 
 import nl.barov.www.barometer.R;
+import nl.barov.www.barometer.database.DatabaseHelper;
+import nl.barov.www.barometer.database.DatabaseInfo;
+import nl.barov.www.barometer.list.CourseListAdapter;
+import nl.barov.www.barometer.models.Course;
 
 public class PieChartActivity extends AppCompatActivity {
     private PieChart mChart;
@@ -36,10 +41,35 @@ public class PieChartActivity extends AppCompatActivity {
         mChart.setTransparentCircleColor(Color.rgb(130, 130, 130));
         mChart.animateY(1400, Easing.EasingOption.EaseInOutQuad);
 
+        DatabaseHelper dbHelper = DatabaseHelper.getHelper(getApplicationContext());
 
-        setData(0);
+        // Set the cursor (items fetcher)
+        Cursor rsCourse = dbHelper.query(DatabaseInfo.CourseTables.COURSE, new String[]{"*"}, null, null, null, null,  DatabaseInfo.CourseColumn.PERIOD + " DESC");
+
+        // Get the amount of return
+        String array[] = new String[rsCourse.getCount()];
+        int i = 0;
+
+        int count = 0;
+
+        rsCourse.moveToFirst();
+
+        // For all the items we get in the return
+        while (!rsCourse.isAfterLast()) {
+            int ects = rsCourse.getInt(rsCourse.getColumnIndex("ects"));
+            count = count + ects;
+            // Add to the listview
+            array[i] = rsCourse.getString(0);
+            i++;
+            rsCourse.moveToNext();
+        }
+
+        Log.d("Aantal puntjes", String.valueOf(count));
+
+        setData(count);
 
         Button fab = (Button) findViewById(R.id.plusTweeTest);
+        assert fab != null;
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
