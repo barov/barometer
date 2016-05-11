@@ -30,14 +30,6 @@ public class CourseListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_courselist);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG).setAction("Action", null).show();
-            }
-        });
-
         mListView = (ListView) findViewById(R.id.my_list_view);
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                                              @Override
@@ -47,9 +39,6 @@ public class CourseListActivity extends AppCompatActivity {
                                              }
                                          }
         );
-        /*courseModels.add(new Course("IKPMD", "3", "10", "2"));             // DUMMY DATA
-        courseModels.add(new Course("IPMT2", "6", "10", "2"));             // DUMMY DATA
-        courseModels.add(new Course("IPROMED", "8", "10", "2"));             // DUMMY DATA*/
 
         DatabaseHelper dbHelper = DatabaseHelper.getHelper(getApplicationContext());
 
