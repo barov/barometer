@@ -58,15 +58,4 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public Cursor query(String table, String[] columns, String selection, String[] selectArgs, String groupBy, String having, String orderBy) {
         return mSQLDB.query(table, columns, selection, selectArgs, groupBy, having, orderBy);
     }
-
-    public boolean updateCourses(String table, String name, String ects, String period) {
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        String currentDateandTime = sdf.format(new Date());
-
-        ContentValues args = new ContentValues();
-        args.put(DatabaseInfo.CourseColumn.NAME, name);
-        args.put(DatabaseInfo.CourseColumn.ECTS, ects);
-        args.put(DatabaseInfo.CourseColumn.PERIOD, period);
-        return mSQLDB.update(table, args, DatabaseInfo.CourseColumn.NAME + "=" + name, null) > 0;
-    }
 }
