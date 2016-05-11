@@ -1,5 +1,6 @@
 package nl.barov.www.barometer.list;
 
+import android.database.Cursor;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -14,6 +15,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import nl.barov.www.barometer.R;
+import nl.barov.www.barometer.database.DatabaseHelper;
+import nl.barov.www.barometer.database.DatabaseInfo;
 import nl.barov.www.barometer.models.Course;
 
 public class CourseListActivity extends AppCompatActivity {
@@ -44,9 +47,35 @@ public class CourseListActivity extends AppCompatActivity {
                                              }
                                          }
         );
-        courseModels.add(new Course("IKPMD", "3", "10", "2"));             // DUMMY DATA
+        /*courseModels.add(new Course("IKPMD", "3", "10", "2"));             // DUMMY DATA
         courseModels.add(new Course("IPMT2", "6", "10", "2"));             // DUMMY DATA
-        courseModels.add(new Course("IPROMED", "8", "10", "2"));             // DUMMY DATA
+        courseModels.add(new Course("IPROMED", "8", "10", "2"));             // DUMMY DATA*/
+
+        DatabaseHelper dbHelper = DatabaseHelper.getHelper(getApplicationContext());
+
+        // Set the cursor (items fetcher)
+        Cursor rsCourse = dbHelper.query(DatabaseInfo.CourseTables.COURSE, new String[]{"*"}, null, null, null, null,  DatabaseInfo.CourseColumn.PERIOD + " DESC");
+
+        // Get the amount of return
+        String array[] = new String[rsCourse.getCount()];
+        int i = 0;
+
+        rsCourse.moveToFirst();
+
+        // For all the items we get in the return
+        while (!rsCourse.isAfterLast()) {
+            String name = rsCourse.getString(rsCourse.getColumnIndex("name"));
+            String ects = rsCourse.getString(rsCourse.getColumnIndex("grade"));
+            String grade = rsCourse.getString(rsCourse.getColumnIndex("grade"));
+            String period = rsCourse.getString(rsCourse.getColumnIndex("period"));
+
+            // Add to the listview
+            courseModels.add(new Course(name, ects, grade, period));
+            array[i] = rsCourse.getString(0);
+            i++;
+            rsCourse.moveToNext();
+        }
+
         mAdapter = new CourseListAdapter(CourseListActivity.this, 0, courseModels);
         mListView.setAdapter(mAdapter);
     }
