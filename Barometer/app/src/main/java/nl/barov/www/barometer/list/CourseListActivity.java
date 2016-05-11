@@ -54,7 +54,7 @@ public class CourseListActivity extends AppCompatActivity {
         // For all the items we get in the return
         while (!rsCourse.isAfterLast()) {
             String name = rsCourse.getString(rsCourse.getColumnIndex("name"));
-            String ects = rsCourse.getString(rsCourse.getColumnIndex("grade"));
+            String ects = rsCourse.getString(rsCourse.getColumnIndex("ects"));
             String grade = rsCourse.getString(rsCourse.getColumnIndex("grade"));
             String period = rsCourse.getString(rsCourse.getColumnIndex("period"));
 
