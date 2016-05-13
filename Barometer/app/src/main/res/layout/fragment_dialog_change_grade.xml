@@ -11,9 +11,9 @@ android:layout_height="wrap_content">
     android:layout_marginRight="4dp"
     android:layout_marginBottom="4dp"
     android:numeric="integer|decimal"
-    android:inputType="numberDecimal"
     android:focusable="true"
     android:focusableInTouchMode="true"
     android:selectAllOnFocus="true"
-    android:maxLength="3" />
+    android:maxLength="3"
+    android:inputType="numberDecimal" />
 </LinearLayout>
