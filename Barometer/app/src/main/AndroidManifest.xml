@@ -32,11 +32,11 @@
             android:name=".list.CourseListActivity"
             android:label="@string/title_course_list_activity"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".PieChartActivity" />
         <activity
-            android:name=".InstellingenActivity"
-            android:label="@string/title_activity_instellingen"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".PieChartActivity"></activity>
+            android:name=".SettingsActivity"
+            android:label="@string/title_activity_settings"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
