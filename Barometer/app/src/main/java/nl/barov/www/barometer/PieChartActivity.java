@@ -17,11 +17,8 @@ import com.github.mikephil.charting.data.PieDataSet;
 
 import java.util.ArrayList;
 
-import nl.barov.www.barometer.R;
 import nl.barov.www.barometer.database.DatabaseHelper;
 import nl.barov.www.barometer.database.DatabaseInfo;
-import nl.barov.www.barometer.list.CourseListAdapter;
-import nl.barov.www.barometer.models.Course;
 
 public class PieChartActivity extends AppCompatActivity {
     private PieChart mChart;

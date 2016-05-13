@@ -1,12 +1,8 @@
 package nl.barov.www.barometer.list;
 
 import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.database.Cursor;
-import android.graphics.Color;
-import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.ColorInt;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -36,7 +32,6 @@ public class CourseListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_courselist);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
 
         mListView = (ListView) findViewById(R.id.my_list_view);
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {

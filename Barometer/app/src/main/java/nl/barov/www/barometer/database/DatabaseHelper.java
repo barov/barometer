@@ -7,9 +7,6 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.provider.BaseColumns;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 /**
  * Created by Tuncay on 3/05/2016.
  */
