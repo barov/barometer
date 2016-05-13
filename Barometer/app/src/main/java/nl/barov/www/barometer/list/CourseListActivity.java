@@ -1,11 +1,15 @@
 package nl.barov.www.barometer.list;
 
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.database.Cursor;
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
+import android.support.annotation.ColorInt;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -14,6 +18,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
+import nl.barov.www.barometer.ChangeGradeDialogFragment;
 import nl.barov.www.barometer.R;
 import nl.barov.www.barometer.database.DatabaseHelper;
 import nl.barov.www.barometer.database.DatabaseInfo;
@@ -29,6 +34,9 @@ public class CourseListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_courselist);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
 
         mListView = (ListView) findViewById(R.id.my_list_view);
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -37,6 +45,16 @@ public class CourseListActivity extends AppCompatActivity {
                                                  Toast t = Toast.makeText(CourseListActivity.this,"Click" + position, Toast.LENGTH_LONG);
                                                  t.show();
 
+                                                 //Getting the course name
+                                                 String value = courseModels.get(position).getName();
+
+                                                 FragmentManager manager = getFragmentManager();
+                                                 ChangeGradeDialogFragment fragment = new ChangeGradeDialogFragment();
+                                                 Bundle args = new Bundle();
+                                                 args.putString("name", value);
+                                                 fragment.setArguments(args);
+                                                 Log.d("course", value);
+                                                 fragment.show(manager, "dialog");
                                              }
                                          }
         );
