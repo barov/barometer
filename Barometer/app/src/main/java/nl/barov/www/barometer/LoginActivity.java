@@ -45,6 +45,7 @@ public class LoginActivity extends AppCompatActivity {
                 showToast(mNaam);
                 Intent i = new Intent(LoginActivity.this, MainActivity.class);
                 startActivity(i);
+                finish();
             }
         });
     }
@@ -57,5 +58,7 @@ public class LoginActivity extends AppCompatActivity {
     public void onBackPressed() {
         finish();
     }
+
+
 }
 

@@ -48,6 +48,7 @@ public class SplashScreenActivity extends AppCompatActivity {
         // ANIMATIE LOGO HSLEIDEN
         ImageView logo_hsleiden = (ImageView) findViewById(R.id.logo_hsleiden);
         Animation myFadeInAnimation_1500 = AnimationUtils.loadAnimation(this, R.anim.fadein_1500);
+        assert logo_hsleiden != null;
         logo_hsleiden.startAnimation(myFadeInAnimation_1500);
 
         // CONTROLEER ALS DE GEBRUIKER INGELOGD IS
@@ -75,6 +76,12 @@ public class SplashScreenActivity extends AppCompatActivity {
                 finish();
             }
         }, SPLASH_SCREEN_TIME);
+    }
+
+    @Override
+    public void onBackPressed()
+    {
+        android.os.Process.killProcess(android.os.Process.myPid());
     }
 
     private void requestSubjects(){

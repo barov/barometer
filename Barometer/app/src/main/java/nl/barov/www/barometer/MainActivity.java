@@ -23,6 +23,8 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        checkIfSignedOut();
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -95,6 +97,17 @@ public class MainActivity extends AppCompatActivity {
 
         //SETTING THE STUDYPOINTSS
         studiepunten.setText(String.valueOf(count));
+    }
+
+    private void checkIfSignedOut() {
+        SharedPreferences sharedPref = getSharedPreferences(getString(R.string.sign_in), MODE_PRIVATE);
+
+        // HAAL DE STATUS OP
+        String key_check = getString(R.string.sign_in);
+        String ingelogd = sharedPref.getString(getString(R.string.sign_in), key_check);
+        if(ingelogd.equals("nee")) {
+            android.os.Process.killProcess(android.os.Process.myPid());
+        }
     }
 
     private void launchCourseListActivity() {
