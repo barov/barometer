@@ -37,9 +37,6 @@ public class CourseListActivity extends AppCompatActivity {
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                                              @Override
                                              public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-                                                 Toast t = Toast.makeText(CourseListActivity.this,"Click" + position, Toast.LENGTH_LONG);
-                                                 t.show();
-
                                                  //Getting the course name
                                                  String value = courseModels.get(position).getName();
 
@@ -48,7 +45,6 @@ public class CourseListActivity extends AppCompatActivity {
                                                  Bundle args = new Bundle();
                                                  args.putString("name", value);
                                                  fragment.setArguments(args);
-                                                 Log.d("course", value);
                                                  fragment.show(manager, "dialog");
                                              }
                                          }

@@ -77,8 +77,6 @@ public class ChangeGradeDialogFragment extends DialogFragment {
         Bundle bundle = getArguments();
         String course = bundle.getString("name");
 
-        Log.d("naam", course);
-
         DatabaseHelper dbHelper = DatabaseHelper.getHelper(getActivity());
         ContentValues newValues = new ContentValues();
         newValues.put("grade", new_grade);
