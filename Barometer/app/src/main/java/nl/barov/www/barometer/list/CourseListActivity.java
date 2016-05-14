@@ -1,6 +1,7 @@
 package nl.barov.www.barometer.list;
 
 import android.app.FragmentManager;
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -15,6 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import nl.barov.www.barometer.ChangeGradeDialogFragment;
+import nl.barov.www.barometer.MainActivity;
 import nl.barov.www.barometer.R;
 import nl.barov.www.barometer.database.DatabaseHelper;
 import nl.barov.www.barometer.database.DatabaseInfo;
@@ -77,6 +79,12 @@ public class CourseListActivity extends AppCompatActivity {
 
         mAdapter = new CourseListAdapter(CourseListActivity.this, 0, courseModels);
         mListView.setAdapter(mAdapter);
+    }
+
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(this, MainActivity.class));
+        finish();
     }
 }
 
