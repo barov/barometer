@@ -11,6 +11,6 @@
     <string name="cancel">Cancel</string>
     <string name="grade_hint">Cijfer</string>
     <string name="cijfer_message">Voor het nieuwe cijfer in:</string>
-    <string name="title_activity_settings">SettingsActivity</string>
+    <string name="title_activity_settings">Instellingen</string>
     <string name="setting_restore_defaults">Herstel Instellingen</string>
 </resources>
