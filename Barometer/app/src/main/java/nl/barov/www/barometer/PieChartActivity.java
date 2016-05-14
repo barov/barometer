@@ -57,18 +57,6 @@ public class PieChartActivity extends AppCompatActivity {
         }
 
         setData(count);
-
-        Button fab = (Button) findViewById(R.id.plusTweeTest);
-        assert fab != null;
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ContentValues newValues = new ContentValues();
-                newValues.put("grade", "9");
-                dbHelper.update(DatabaseInfo.CourseTables.COURSE, newValues, "name=?", new String[]{"IPROV"});
-            }
-        });
-
     }
 
     private void setData(int aantal) {
@@ -85,17 +73,16 @@ public class PieChartActivity extends AppCompatActivity {
         //  http://www.materialui.co/colors
         ArrayList<Integer> colors = new ArrayList<>();
         if (currentEcts <10) {
-            colors.add(Color.rgb(244,81,30));
+            colors.add(Color.rgb(255,0,0));
         } else if (currentEcts < 40){
-            colors.add(Color.rgb(235,0,0));
+            colors.add(Color.rgb(255,150,150));
         } else if  (currentEcts < 50) {
-            colors.add(Color.rgb(253,216,53));
+            colors.add(Color.rgb(10,150,10));
         } else {
-            colors.add(Color.rgb(67,160,71));
+            colors.add(Color.rgb(10,150,10));
         }
 
-        colors.add(Color.rgb(255,0,0));
-
+        colors.add(Color.rgb(40,188,185));
 
         PieDataSet dataSet = new PieDataSet(yValues, "ECTS");
         //  dataSet.setDrawValues(false); //schrijf ook de getallen weg.
