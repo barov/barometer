@@ -36,7 +36,9 @@
             android:name=".InstellingenActivity"
             android:label="@string/title_activity_instellingen"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".PieChartActivity"></activity>
+        <activity
+            android:name=".PieChartActivity"
+            android:label="Overzicht"></activity>
     </application>
 
 </manifest>
