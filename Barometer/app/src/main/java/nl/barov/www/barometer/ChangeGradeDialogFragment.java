@@ -5,7 +5,9 @@ import android.app.Dialog;
 import android.app.DialogFragment;
 import android.content.ContentValues;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.design.widget.Snackbar;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -83,5 +85,22 @@ public class ChangeGradeDialogFragment extends DialogFragment {
         dbHelper.update(DatabaseInfo.CourseTables.COURSE, newValues, "name=?", new String[]{course});
         String message = "Je hebt het cijfer voor " + course + " veranderd in een " + new_grade;
         showMessage(message);
+        restartActivity();
+    }
+
+    private void restartActivity() {
+        new Handler().post(new Runnable() {
+            @Override
+            public void run() {
+                Intent intent = getActivity().getIntent();
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK
+                        | Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                getActivity().overridePendingTransition(0, 0);
+                getActivity().finish();
+
+                getActivity().overridePendingTransition(0, 0);
+                startActivity(intent);
+            }
+        });
     }
 }
