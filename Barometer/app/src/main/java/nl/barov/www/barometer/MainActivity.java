@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -113,6 +114,7 @@ public class MainActivity extends AppCompatActivity {
     private void launchCourseListActivity() {
         Intent intent = new Intent(MainActivity.this, CourseListActivity.class);
         startActivity(intent);
+        finish();
     }
 
     @Override
@@ -137,5 +139,10 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onBackPressed() {
+        finish();
     }
 }

@@ -1,6 +1,7 @@
 package nl.barov.www.barometer.list;
 
 import android.app.FragmentManager;
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -15,6 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import nl.barov.www.barometer.ChangeGradeDialogFragment;
+import nl.barov.www.barometer.MainActivity;
 import nl.barov.www.barometer.R;
 import nl.barov.www.barometer.database.DatabaseHelper;
 import nl.barov.www.barometer.database.DatabaseInfo;
@@ -37,9 +39,6 @@ public class CourseListActivity extends AppCompatActivity {
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                                              @Override
                                              public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-                                                 Toast t = Toast.makeText(CourseListActivity.this,"Click" + position, Toast.LENGTH_LONG);
-                                                 t.show();
-
                                                  //Getting the course name
                                                  String value = courseModels.get(position).getName();
 
@@ -48,7 +47,6 @@ public class CourseListActivity extends AppCompatActivity {
                                                  Bundle args = new Bundle();
                                                  args.putString("name", value);
                                                  fragment.setArguments(args);
-                                                 Log.d("course", value);
                                                  fragment.show(manager, "dialog");
                                              }
                                          }
@@ -81,6 +79,12 @@ public class CourseListActivity extends AppCompatActivity {
 
         mAdapter = new CourseListAdapter(CourseListActivity.this, 0, courseModels);
         mListView.setAdapter(mAdapter);
+    }
+
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(this, MainActivity.class));
+        finish();
     }
 }
 
