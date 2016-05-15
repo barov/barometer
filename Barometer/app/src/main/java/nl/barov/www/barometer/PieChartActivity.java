@@ -1,13 +1,10 @@
 package nl.barov.www.barometer;
 
-import android.content.ContentValues;
 import android.database.Cursor;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.View;
-import android.widget.Button;
 
 import com.github.mikephil.charting.animation.Easing;
 import com.github.mikephil.charting.charts.PieChart;
