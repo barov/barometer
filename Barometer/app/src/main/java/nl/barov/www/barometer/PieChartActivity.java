@@ -52,8 +52,20 @@ public class PieChartActivity extends AppCompatActivity {
         while (!rsCourse.isAfterLast()) {
             int ects = rsCourse.getInt(rsCourse.getColumnIndex("ects"));
             count = count + ects;
-            // Add to the listview
+            // Add to the total
             rsCourse.moveToNext();
+        }
+
+        //We will do the same for grades 10
+        Cursor rsCourseTen = dbHelper.query(DatabaseInfo.CourseTables.COURSE, new String[]{"*"}, "grade=?", new String[]{"10"}, null, null, null);
+
+        rsCourseTen.moveToFirst();
+
+        while(!rsCourseTen.isAfterLast()) {
+            int ects = rsCourseTen.getInt(rsCourseTen.getColumnIndex("ects"));
+            count = count + ects;
+            //Add to the total
+            rsCourseTen.moveToNext();
         }
 
         setData(count);
