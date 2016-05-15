@@ -105,7 +105,19 @@ public class MainActivity extends AppCompatActivity {
             count = count + ects;
             rsCourseTen.moveToNext();
         }
+
+        //We want to substract grades with the default
+        Cursor rsCourseDef = dbHelper.query(DatabaseInfo.CourseTables.COURSE, new String[]{"*"}, "grade=?", new String[]{"Voer een cijfer in"}, null, null, null);
+
+        rsCourseDef.moveToFirst();
+
+        while(!rsCourseDef.isAfterLast()) {
+            int ects = rsCourseDef.getInt(rsCourseTen.getColumnIndex("ects"));
+            count = count - ects;
+            rsCourseDef.moveToNext();
+        }
         //SETTING THE STUDYPOINTSS
+        assert studiepunten != null;
         studiepunten.setText(String.valueOf(count));
     }
 

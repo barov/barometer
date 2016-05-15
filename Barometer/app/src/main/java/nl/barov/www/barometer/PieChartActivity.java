@@ -65,7 +65,18 @@ public class PieChartActivity extends AppCompatActivity {
             rsCourseTen.moveToNext();
         }
 
-        setData(count);
+        //We want to substract grades with the default
+        Cursor rsCourseDef = dbHelper.query(DatabaseInfo.CourseTables.COURSE, new String[]{"*"}, "grade=?", new String[]{"Voer een cijfer in"}, null, null, null);
+
+        rsCourseDef.moveToFirst();
+
+        while(!rsCourseDef.isAfterLast()) {
+            int ects = rsCourseDef.getInt(rsCourseTen.getColumnIndex("ects"));
+            count = count - ects;
+            rsCourseDef.moveToNext();
+        }
+
+    setData(count);
     }
 
     private void setData(int aantal) {

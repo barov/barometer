@@ -137,7 +137,7 @@ public class SplashScreenActivity extends AppCompatActivity {
 
             String name = String.valueOf(subjects.get(i).getName());
             String ects = String.valueOf(subjects.get(i).getEcts());
-            String grade = String.valueOf(subjects.get(i).getGrade());
+            String grade = "Voer een cijfer in";
             String period = String.valueOf(subjects.get(i).getPeriod());
 
 
@@ -150,8 +150,8 @@ public class SplashScreenActivity extends AppCompatActivity {
                 ContentValues values = new ContentValues();
                 values.put(DatabaseInfo.CourseColumn.NAME, name);
                 values.put(DatabaseInfo.CourseColumn.PERIOD, period);
-                values.put(DatabaseInfo.CourseColumn.ECTS, ects);
                 values.put(DatabaseInfo.CourseColumn.GRADE, grade);
+                values.put(DatabaseInfo.CourseColumn.ECTS, ects);
 
                 // The insert itself by the dbhelper
                 dbHelper.insert(DatabaseInfo.CourseTables.COURSE, null, values);
