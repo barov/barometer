@@ -96,6 +96,16 @@ public class MainActivity extends AppCompatActivity {
             rsCourse.moveToNext();
         }
 
+        //We will do the same for grades 10
+        Cursor rsCourseTen = dbHelper.query(DatabaseInfo.CourseTables.COURSE, new String[]{"*"}, "grade=?", new String[]{"10"}, null, null, null);
+
+        rsCourseTen.moveToFirst();
+
+        while(!rsCourseTen.isAfterLast()) {
+            int ects = rsCourseTen.getInt(rsCourseTen.getColumnIndex("ects"));
+            count = count + ects;
+            rsCourseTen.moveToNext();
+        }
         //SETTING THE STUDYPOINTSS
         studiepunten.setText(String.valueOf(count));
     }

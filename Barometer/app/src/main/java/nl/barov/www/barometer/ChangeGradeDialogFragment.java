@@ -46,8 +46,12 @@ public class ChangeGradeDialogFragment extends DialogFragment {
                             cijferInvoeren(new_grade);
                         }
                         else if(new_grade.length() == 2) {
-                            String message = "De invoer van het cijfer was verkeerd.";
-                            showMessage(message);
+                            if(new_grade.equals("10")) {
+                                cijferInvoeren(new_grade);
+                            } else{
+                                String message = "De invoer van het cijfer was verkeerd.";
+                                showMessage(message);
+                            }
                         }
                         else {
                             if(new_grade.indexOf(".") > 0) {
