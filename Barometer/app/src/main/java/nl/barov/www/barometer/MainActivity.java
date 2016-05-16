@@ -109,9 +109,9 @@ public class MainActivity extends AppCompatActivity {
         studiepunten.setText(String.valueOf(count));
 
         // ADVIES STUDIEPUNTEN HIER KOMT HET ADVIES VOOR DE STUDENT
+        // CONTROLEER DE PERIODE EN STUDIEPUNTEN GEEF DAN ADVIES
         TextView advies = (TextView) findViewById(R.id.advies);
 
-        // CONTROLEER DE PERIODE EN STUDIEPUNTEN GEEF DAN ADVIES
         // PERIODE 1
         if ((week >= 36) && ( week <= 46)){advies.setText("Deze periode kan je 13 studiepunten halen doe je best onderschat IARCH niet");}
         // PERIODE 2
