@@ -1,5 +1,6 @@
 package nl.barov.www.barometer;
 
+import android.content.ContentValues;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -7,6 +8,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
+
+import nl.barov.www.barometer.database.DatabaseHelper;
+import nl.barov.www.barometer.database.DatabaseInfo;
 
 public class SettingsActivity extends AppCompatActivity {
 
@@ -38,9 +42,17 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
     private void restartApplication() {
+        zetCijfersTerug();
         Intent intent = new Intent(SettingsActivity.this, SplashScreenActivity.class);
         startActivity(intent);
         finish();
+    }
+
+    private void zetCijfersTerug() {
+        DatabaseHelper dbHelper = DatabaseHelper.getHelper(getApplicationContext());
+        ContentValues newValues = new ContentValues();
+        newValues.put("grade", "Voer een cijfer in");
+        dbHelper.update(DatabaseInfo.CourseTables.COURSE, newValues, null, null);
     }
 
 }
