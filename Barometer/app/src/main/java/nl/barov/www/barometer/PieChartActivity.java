@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.widget.TextView;
 
 import com.github.mikephil.charting.animation.Easing;
 import com.github.mikephil.charting.charts.PieChart;
@@ -13,6 +14,7 @@ import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 import nl.barov.www.barometer.database.DatabaseHelper;
 import nl.barov.www.barometer.database.DatabaseInfo;
@@ -66,6 +68,37 @@ public class PieChartActivity extends AppCompatActivity {
         }
 
         setData(count);
+
+
+        Calendar cal = Calendar.getInstance();
+        int week =  cal.get(Calendar.WEEK_OF_YEAR);
+        int year =  cal.get(Calendar.YEAR);
+
+        // ADVIES STUDIEPUNTEN HIER KOMT HET ADVIES VOOR DE STUDENT
+        // CONTROLEER DE PERIODE EN STUDIEPUNTEN GEEF DAN ADVIES
+        TextView advies = (TextView) findViewById(R.id.advies);
+
+        // PERIODE 1
+        if ((week >= 36) && ( week <= 46)){advies.setText("Deze periode kan je 13 studiepunten halen doe je best onderschat IARCH niet");}
+        // PERIODE 2
+        else if((week >= 47) && ( week <= 5) && count <= 12){advies.setText("Vorige periode heb je niet alles gehaald, je P halen we wel volgend jaar :)");}
+        else if((week >= 47) && ( week <= 5) && count >= 13){advies.setText("Ga zo door!, Probeer deze periode ook alles te halen je bent een topper.");}
+        // PERIODE 3
+        else if((week >= 6) && ( week <= 16) && count <= 8){advies.setText("Neem contact op met je SLB, onvoldoende studiepunten");}
+        else if((week >= 6) && ( week <= 16) && count >= 9 && count <= 18){advies.setText("Probeer de 40 punten te halen kom op je kan het!");}
+        else if((week >= 6) && ( week <= 16) && count >= 19 && count <= 28){advies.setText("Probeer de 50 punten te halen kom op je kan het!");}
+        else if((week >= 6) && ( week <= 16) && count >= 29){advies.setText("Je bent geweldig we gaan voor onze P!");}
+        // PERIODE 4
+        else if((week >= 17) && ( week <= 28) && count <= 22){advies.setText("Neem contact op met je SLB, onvoldoende studiepunten");}
+        else if((week >= 17) && ( week <= 28) && count >= 23 && count <= 32){advies.setText("Probeer de 40 punten te halen kom op je kan het!");}
+        else if((week >= 17) && ( week <= 28) && count >= 33 && count <= 42 ){advies.setText("Probeer de 50 punten te halen kom op je kan het!");}
+        else if((week >= 17) && ( week <= 28) && count >= 43 && count <= 59){advies.setText("Je kan nog je P halen kom op!");}
+        else if((week >= 17) && ( week <= 28) && count >= 60){advies.setText("Gefeliciteerd je P in 1 jaar je bent een topper!");}
+        // ZOMER PERIODE
+        else if((week >= 29) && ( week <= 35) && count <= 39){advies.setText("Zoek een andere school");}
+        else if((week >= 29) && ( week <= 35) && count >= 40 && count <= 49){advies.setText("Veel succes in de Z klas");}
+        else if((week >= 29) && ( week <= 35) && count >= 50 && count <= 59){advies.setText("Veel succes in het 2e jaar");}
+        else if((week >= 29) && ( week <= 35) && count >= 60){advies.setText("Gefeliciteerd je P in 1 jaar je bent een topper geniet van je vakantie");}
     }
 
     private void setData(int aantal) {

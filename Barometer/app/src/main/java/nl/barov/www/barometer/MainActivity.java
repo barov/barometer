@@ -126,7 +126,8 @@ public class MainActivity extends AppCompatActivity {
         else if((week >= 17) && ( week <= 28) && count <= 22){advies.setText("Neem contact op met je SLB, onvoldoende studiepunten");}
         else if((week >= 17) && ( week <= 28) && count >= 23 && count <= 32){advies.setText("Probeer de 40 punten te halen kom op je kan het!");}
         else if((week >= 17) && ( week <= 28) && count >= 33 && count <= 42 ){advies.setText("Probeer de 50 punten te halen kom op je kan het!");}
-        else if((week >= 17) && ( week <= 28) && count >= 43){advies.setText("Je kan nog je P halen kom op!");}
+        else if((week >= 17) && ( week <= 28) && count >= 43 && count <= 59){advies.setText("Je kan nog je P halen kom op!");}
+        else if((week >= 17) && ( week <= 28) && count >= 60){advies.setText("Gefeliciteerd je P in 1 jaar je bent een topper!");}
         // ZOMER PERIODE
         else if((week >= 29) && ( week <= 35) && count <= 39){advies.setText("Zoek een andere school");}
         else if((week >= 29) && ( week <= 35) && count >= 40 && count <= 49){advies.setText("Veel succes in de Z klas");}
