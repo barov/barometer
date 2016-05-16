@@ -21,7 +21,7 @@ android {
 
 repositories {
     mavenCentral()
-    maven { url "https://oss.sonatype.org/content/repositories/shapshots/"}
+    maven { url "https://jitpack.io"}
 }
 
 dependencies {
@@ -31,5 +31,5 @@ dependencies {
     compile 'com.android.support:design:23.3.0'
     compile 'com.google.code.gson:gson:2.3.1'
     compile 'com.mcxiaoke.volley:library:1.0.19'
-
+    compile 'com.github.PhilJay:MPAndroidChart:v2.1.5'
 }

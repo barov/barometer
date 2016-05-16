@@ -55,4 +55,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public Cursor query(String table, String[] columns, String selection, String[] selectArgs, String groupBy, String having, String orderBy) {
         return mSQLDB.query(table, columns, selection, selectArgs, groupBy, having, orderBy);
     }
+
+    public void update(String table, ContentValues values, String whereClause, String[] whereArgs) {
+        mSQLDB.update(table, values, whereClause, whereArgs);
+    }
 }
