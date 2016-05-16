@@ -36,8 +36,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
+    <View xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="18dp"
+        android:background="#B6B6B6" />
+
     <Button
-        android:text="Herstel instellingen"
+        android:text="Herstel Applicatie"
         android:id="@+id/setDefaults"
         android:layout_marginTop="10dp"
         android:padding="10dp"
