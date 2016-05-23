@@ -44,4 +44,8 @@
     <string name="advies50Punten">Probeer de 50 punten te halen kom op je kan het!</string>
     <string name="negatiefStudieAdvies">Neem contact op met je SLB, onvoldoende studiepunten</string>
     <string name="ragequit">Je kan niet verder met deze opleiding</string>
+    <string name="mt">Mediatechnologie</string>
+    <string name="SE">Software Engineering</string>
+    <string name="FICT">Forensisch ICT</string>
+    <string name="BDAM">Business Data Management</string>
 </resources>
