@@ -35,15 +35,15 @@
     <string name="adviesPeriode4Positief">Je kan nog je P halen kom op!, je specialisatievak is 10 studiepunten waard.</string>
 
     <!-- VAKANTIE -->
-    <string name="zKlas">Veel succes in de Z klas</string>
-    <string name="jaar2">"Veel succes in het 2e jaar"</string>
-    <string name="pGehaald">Gefeliciteerd je P in 1 jaar je bent een topper geniet van je vakantie</string>
+    <string name="zKlas">Veel succes in de Z klas.</string>
+    <string name="jaar2">"Veel succes in het 2e jaar.</string>
+    <string name="pGehaald">Gefeliciteerd je P in 1 jaar je bent een topper geniet van je vakantie.</string>
 
     <!-- ALGEMEEN 4 -->
     <string name="advies40Punten">Probeer de 40 punten te halen kom op je kan het!</string>
     <string name="advies50Punten">Probeer de 50 punten te halen kom op je kan het!</string>
-    <string name="negatiefStudieAdvies">Neem contact op met je SLB, onvoldoende studiepunten</string>
-    <string name="ragequit">Je kan niet verder met deze opleiding</string>
+    <string name="negatiefStudieAdvies">Neem contact op met je SLB, onvoldoende studiepunten.</string>
+    <string name="ragequit">Je kan niet verder met deze opleiding.</string>
 
     <string name="mt">Mediatechnologie</string>
     <string name="SE">Software Engineering</string>
