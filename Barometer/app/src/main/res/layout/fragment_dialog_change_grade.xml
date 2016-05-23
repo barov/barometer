@@ -16,4 +16,19 @@ android:layout_height="wrap_content">
     android:selectAllOnFocus="true"
     android:maxLength="3"
     android:inputType="numberDecimal" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/Voldoende"
+        android:id="@+id/checkBoxVoldoende"
+        android:checked="false" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/Onvoldoende"
+        android:id="@+id/checkBoxOnvoldoende"
+        android:checked="false" />
+
 </LinearLayout>
