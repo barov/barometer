@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.LayoutInflater;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -33,31 +34,44 @@ public class ChangeGradeDialogFragment extends DialogFragment {
                 .setPositiveButton(R.string.oke, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int id) {
+                        CheckBox checkBoxVoldoende = (CheckBox) getDialog().findViewById(R.id.checkBoxVoldoende);
+                        CheckBox checkBoxOnvoldoende = (CheckBox) getDialog().findViewById(R.id.checkBoxOnvoldoende);
                         EditText editText = (EditText) getDialog().findViewById(R.id.grade);
-                        String new_grade =  editText.getText().toString();
-
-                        if(new_grade.length() == 0) {
-                            String message = "De invoer van het cijfer was verkeerd.";
-                            showMessage(message);
+                        String new_grade = editText.getText().toString();
+                        if(checkBoxVoldoende.isChecked() && checkBoxOnvoldoende.isChecked()) {
+                            String ongeldig = "Vul een geldig cijfer in.";
+                            showMessage(ongeldig);
                         }
-                        else if(new_grade.length() == 1) {
-                            cijferInvoeren(new_grade);
+                        else if(checkBoxVoldoende.isChecked()) {
+                            String voldoende = "Je hebt een voldoende.";
+                            showMessage(voldoende);
+                            cijferInvoeren("V");
                         }
-                        else if(new_grade.length() == 2) {
-                            if(new_grade.equals("10")) {
-                                cijferInvoeren(new_grade);
-                            } else{
-                                String message = "De invoer van het cijfer was verkeerd.";
-                                showMessage(message);
-                            }
+                        else if(checkBoxOnvoldoende.isChecked() && new_grade.isEmpty()) {
+                            String onvoldoende = "Je hebt een onvoldoende.";
+                            showMessage(onvoldoende);
+                            cijferInvoeren("O");
                         }
                         else {
-                            if(new_grade.indexOf(".") > 0) {
-                                cijferInvoeren(new_grade);
-                            }
-                            else {
+                            if (new_grade.length() == 0) {
                                 String message = "De invoer van het cijfer was verkeerd.";
                                 showMessage(message);
+                            } else if (new_grade.length() == 1) {
+                                cijferInvoeren(new_grade);
+                            } else if (new_grade.length() == 2) {
+                                if (new_grade.equals("10")) {
+                                    cijferInvoeren(new_grade);
+                                } else {
+                                    String message = "De invoer van het cijfer was verkeerd.";
+                                    showMessage(message);
+                                }
+                            } else {
+                                if (new_grade.indexOf(".") > 0) {
+                                    cijferInvoeren(new_grade);
+                                } else {
+                                    String message = "De invoer van het cijfer was verkeerd.";
+                                    showMessage(message);
+                                }
                             }
                         }
                     }
