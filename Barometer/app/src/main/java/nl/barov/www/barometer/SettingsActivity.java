@@ -78,22 +78,31 @@ public class SettingsActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 unSetSpec(specialisatie);
+                String spec = getSharedPrefSpec();
 
                 if(rBMT.isChecked()) {
                     showMessage("MT");
+                    changeIIPXXXX("IIPMEDT", spec);
                     setSharedPrefSpec("MT");
                     restartActivity();
                 } else if (rBSE.isChecked()) {
                     showMessage("SE");
+                    changeIIPXXXX("IIPSE", spec);
                     setSharedPrefSpec("SE");
                     restartActivity();
                 } else if (rBBDAM.isChecked()) {
                     showMessage("BDAM");
+                    changeIIPXXXX("IIPBDAM", spec);
                     setSharedPrefSpec("BDAM");
                     restartActivity();
                 } else if (rBFICT.isChecked()) {
                     showMessage("FICT");
+                    changeIIPXXXX("IIPFICT", spec);
                     setSharedPrefSpec("FICT");
+                    restartActivity();
+                } else {
+                    showMessage("NON");
+                    setSpecChecked(spec);
                     restartActivity();
                 }
             }
@@ -210,6 +219,28 @@ public class SettingsActivity extends AppCompatActivity {
         } else if(specialisatie.equals("BDAM")) {
             assert rBBDAM != null;
             rBBDAM.setChecked(false);
+        }
+    }
+
+    private void changeIIPXXXX(String iipxxxx, String specialisatie) {
+        String oldSub = getOldSub(specialisatie);
+        DatabaseHelper dbHelper = DatabaseHelper.getHelper(getApplicationContext());
+        ContentValues newValues = new ContentValues();
+        newValues.put("name", iipxxxx);
+        dbHelper.update(DatabaseInfo.CourseTables.COURSE, newValues, "name=?", new String[]{oldSub});
+    }
+
+    private String getOldSub(String specialisatie) {
+        if(specialisatie.equals("MT")) {
+            return "IIPMEDT";
+        } else if(specialisatie.equals("SE")) {
+            return "IIPSE";
+        } else if(specialisatie.equals("FICT")) {
+            return "IIPFICT";
+        } else if(specialisatie.equals("BDAM")) {
+            return "IIPBDAM";
+        } else {
+            return "IIPXXXX";
         }
     }
 }
