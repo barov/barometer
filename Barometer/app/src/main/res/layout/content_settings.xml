@@ -15,7 +15,7 @@
 
 
     <TextView
-        android:text="Verander je gebruikernaam hier"
+        android:text="Verander je gebruikernaam hier:"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
@@ -29,6 +29,58 @@
     <Button
         android:text="Opslaan"
         android:id="@+id/save_button"
+        android:layout_marginTop="10dp"
+        android:padding="10dp"
+        android:textColor="@color/white"
+        android:background="@color/colorPrimary"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <View xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="18dp"
+        android:background="#B6B6B6" />
+
+    <TextView
+        android:text="Welke specialisatie kies je?"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp" />
+
+    <RadioButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/mt"
+        android:id="@+id/radioButtonMT"
+        android:checked="false" />
+
+    <RadioButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/SE"
+        android:id="@+id/radioButtonSE"
+        android:checked="false" />
+
+    <RadioButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/FICT"
+        android:id="@+id/radioButtonFICT"
+        android:checked="false" />
+
+    <RadioButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/BDAM"
+        android:id="@+id/radioButtonBDAM"
+        android:checked="false"
+        android:layout_marginBottom="12dp"/>
+
+    <Button
+        android:text="Opslaan"
+        android:id="@+id/save_spec_button"
         android:layout_marginTop="10dp"
         android:padding="10dp"
         android:textColor="@color/white"

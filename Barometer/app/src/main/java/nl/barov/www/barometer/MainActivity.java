@@ -116,6 +116,17 @@ public class MainActivity extends AppCompatActivity {
             count = count - ects;
             rsCourseDef.moveToNext();
         }
+
+        //We want to substract grades with the default
+        Cursor rsCourseOnvoldoende = dbHelper.query(DatabaseInfo.CourseTables.COURSE, new String[]{"*"}, "grade=?", new String[]{"O"}, null, null, null);
+
+        rsCourseOnvoldoende.moveToFirst();
+
+        while(!rsCourseOnvoldoende.isAfterLast()) {
+            int ects = rsCourseOnvoldoende.getInt(rsCourseTen.getColumnIndex("ects"));
+            count = count - ects;
+            rsCourseOnvoldoende.moveToNext();
+        }
         //SETTING THE STUDYPOINTSS
         assert studiepunten != null;
         studiepunten.setText(String.valueOf(count));

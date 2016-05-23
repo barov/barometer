@@ -78,6 +78,16 @@ public class PieChartActivity extends AppCompatActivity {
             rsCourseDef.moveToNext();
         }
 
+        Cursor rsCourseOnvoldoende = dbHelper.query(DatabaseInfo.CourseTables.COURSE, new String[]{"*"}, "grade=?", new String[]{"O"}, null, null, null);
+
+        rsCourseOnvoldoende.moveToFirst();
+
+        while(!rsCourseOnvoldoende.isAfterLast()) {
+            int ects = rsCourseOnvoldoende.getInt(rsCourseTen.getColumnIndex("ects"));
+            count = count - ects;
+            rsCourseOnvoldoende.moveToNext();
+        }
+
         setData(count);
 
 
