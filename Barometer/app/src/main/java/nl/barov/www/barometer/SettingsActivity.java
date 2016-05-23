@@ -82,18 +82,22 @@ public class SettingsActivity extends AppCompatActivity {
                 if(rBMT.isChecked()) {
                     showMessage("MT");
                     setSharedPrefSpec("MT");
+                    changeIIPXXXX("IIPMEDT");
                     restartActivity();
                 } else if (rBSE.isChecked()) {
                     showMessage("SE");
                     setSharedPrefSpec("SE");
+                    changeIIPXXXX("IIPSE");
                     restartActivity();
                 } else if (rBBDAM.isChecked()) {
                     showMessage("BDAM");
                     setSharedPrefSpec("BDAM");
+                    changeIIPXXXX("IIPBDAM");
                     restartActivity();
                 } else if (rBFICT.isChecked()) {
                     showMessage("FICT");
                     setSharedPrefSpec("FICT");
+                    changeIIPXXXX("IIPFICT");
                     restartActivity();
                 }
             }
@@ -211,5 +215,12 @@ public class SettingsActivity extends AppCompatActivity {
             assert rBBDAM != null;
             rBBDAM.setChecked(false);
         }
+    }
+
+    private void changeIIPXXXX(String iipxxxx) {
+        DatabaseHelper dbHelper = DatabaseHelper.getHelper(getApplicationContext());
+        ContentValues newValues = new ContentValues();
+        newValues.put("name", iipxxxx);
+        dbHelper.update(DatabaseInfo.CourseTables.COURSE, newValues, "name=?", new String[]{"IIPXXXX"});
     }
 }
