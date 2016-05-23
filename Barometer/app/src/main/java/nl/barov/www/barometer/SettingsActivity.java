@@ -11,6 +11,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.Toast;
 
 import nl.barov.www.barometer.database.DatabaseHelper;
@@ -26,7 +27,7 @@ public class SettingsActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         EditText editTextField = (EditText) findViewById(R.id.input_naam);
-        final String gebruikersnaam = getSharedPref();
+        final String gebruikersnaam = getSharedPrefUserName();
         editTextField.setHint(gebruikersnaam);
 
         Button saveButton = (Button) findViewById(R.id.save_button);
@@ -43,7 +44,7 @@ public class SettingsActivity extends AppCompatActivity {
                     showMessage("U heeft dezelfde gebruikersnaam ingevuld.");
                 }
                 else {
-                    setSharedPref(new_name);
+                    setSharedPrefUserName(new_name);
                     showMessage("U gebruikersnaam is veranderd naar " + new_name + ".");
                     restartActivity();
                 }
@@ -62,6 +63,41 @@ public class SettingsActivity extends AppCompatActivity {
                 restartApplication();
             }
         });
+
+        final RadioButton rBMT = (RadioButton) findViewById(R.id.radioButtonMT);
+        final RadioButton rBSE = (RadioButton) findViewById(R.id.radioButtonSE);
+        final RadioButton rBBDAM = (RadioButton) findViewById(R.id.radioButtonBDAM);
+        final RadioButton rBFICT = (RadioButton) findViewById(R.id.radioButtonFICT);
+        Button saveSpecButton = (Button) findViewById(R.id.save_spec_button);
+
+        final String specialisatie = getSharedPrefSpec();
+        setSpecChecked(specialisatie);
+
+        assert saveSpecButton != null;
+        saveSpecButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                unSetSpec(specialisatie);
+
+                if(rBMT.isChecked()) {
+                    showMessage("MT");
+                    setSharedPrefSpec("MT");
+                    restartActivity();
+                } else if (rBSE.isChecked()) {
+                    showMessage("SE");
+                    setSharedPrefSpec("SE");
+                    restartActivity();
+                } else if (rBBDAM.isChecked()) {
+                    showMessage("BDAM");
+                    setSharedPrefSpec("BDAM");
+                    restartActivity();
+                } else if (rBFICT.isChecked()) {
+                    showMessage("FICT");
+                    setSharedPrefSpec("FICT");
+                    restartActivity();
+                }
+            }
+        });
     }
 
     @Override
@@ -70,12 +106,12 @@ public class SettingsActivity extends AppCompatActivity {
         finish();
     }
 
-    private String getSharedPref() {
+    private String getSharedPrefUserName() {
         SharedPreferences sharedpref = getSharedPreferences(getString(R.string.gebruikers_naam), Context.MODE_PRIVATE);
         return sharedpref.getString(getString(R.string.gebruikers_naam), "");
     }
 
-    private void setSharedPref(String new_name) {
+    private void setSharedPrefUserName(String new_name) {
         SharedPreferences sharedPref = getSharedPreferences(getString(R.string.gebruikers_naam), MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
         editor.putString(getString(R.string.gebruikers_naam), new_name);
@@ -123,4 +159,57 @@ public class SettingsActivity extends AppCompatActivity {
         });
     }
 
+    private void setSharedPrefSpec(String specialisatie) {
+        SharedPreferences sharedPrefSpec = getSharedPreferences(getString(R.string.spec), MODE_PRIVATE);
+        SharedPreferences.Editor editorSpec = sharedPrefSpec.edit();
+        editorSpec.putString(getString(R.string.spec), specialisatie);
+        editorSpec.commit();
+    }
+
+    private String getSharedPrefSpec() {
+        SharedPreferences sharedpref = getSharedPreferences(getString(R.string.spec), Context.MODE_PRIVATE);
+        return sharedpref.getString(getString(R.string.spec), "");
+    }
+
+    private void setSpecChecked(String specialisatie) {
+        RadioButton rBMT = (RadioButton) findViewById(R.id.radioButtonMT);
+        RadioButton rBSE = (RadioButton) findViewById(R.id.radioButtonSE);
+        RadioButton rBBDAM = (RadioButton) findViewById(R.id.radioButtonBDAM);
+        RadioButton rBFICT = (RadioButton) findViewById(R.id.radioButtonFICT);
+
+        if(specialisatie.equals("MT")) {
+            assert rBMT != null;
+            rBMT.setChecked(true);
+        } else if(specialisatie.equals("SE")) {
+            assert rBSE != null;
+            rBSE.setChecked(true);
+        } else if(specialisatie.equals("FICT")) {
+            assert rBFICT != null;
+            rBFICT.setChecked(true);
+        } else if(specialisatie.equals("BDAM")) {
+            assert rBBDAM != null;
+            rBBDAM.setChecked(true);
+        }
+    }
+
+    private void unSetSpec(String specialisatie) {
+        RadioButton rBMT = (RadioButton) findViewById(R.id.radioButtonMT);
+        RadioButton rBSE = (RadioButton) findViewById(R.id.radioButtonSE);
+        RadioButton rBBDAM = (RadioButton) findViewById(R.id.radioButtonBDAM);
+        RadioButton rBFICT = (RadioButton) findViewById(R.id.radioButtonFICT);
+
+        if(specialisatie.equals("MT")) {
+            assert rBMT != null;
+            rBMT.setChecked(false);
+        } else if(specialisatie.equals("SE")) {
+            assert rBSE != null;
+            rBSE.setChecked(false);
+        } else if(specialisatie.equals("FICT")) {
+            assert rBFICT != null;
+            rBFICT.setChecked(false);
+        } else if(specialisatie.equals("BDAM")) {
+            assert rBBDAM != null;
+            rBBDAM.setChecked(false);
+        }
+    }
 }

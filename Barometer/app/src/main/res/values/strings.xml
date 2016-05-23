@@ -48,4 +48,5 @@
     <string name="SE">Software Engineering</string>
     <string name="FICT">Forensisch ICT</string>
     <string name="BDAM">Business Data Management</string>
+    <string name="spec">spec</string>
 </resources>

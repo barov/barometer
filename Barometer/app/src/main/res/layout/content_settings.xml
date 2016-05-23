@@ -53,34 +53,34 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/mt"
-        android:id="@+id/radioButtonSpec1"
+        android:id="@+id/radioButtonMT"
         android:checked="false" />
 
     <RadioButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/SE"
-        android:id="@+id/radioButtonSpec2"
+        android:id="@+id/radioButtonSE"
         android:checked="false" />
 
     <RadioButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/FICT"
-        android:id="@+id/radioButtonSpec3"
+        android:id="@+id/radioButtonFICT"
         android:checked="false" />
 
     <RadioButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/BDAM"
-        android:id="@+id/radioButtonSpec4"
+        android:id="@+id/radioButtonBDAM"
         android:checked="false"
         android:layout_marginBottom="12dp"/>
 
     <Button
         android:text="Opslaan"
-        android:id="@+id/save_button2"
+        android:id="@+id/save_spec_button"
         android:layout_marginTop="10dp"
         android:padding="10dp"
         android:textColor="@color/white"
