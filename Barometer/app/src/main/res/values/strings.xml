@@ -15,4 +15,33 @@
     <string name="setting_restore_defaults">Herstel Instellingen</string>
     <string name="Voldoende">Voldoende</string>
     <string name="Onvoldoende">Onvoldoende</string>
+
+    <!-- PERIODES -->
+    <string name="periode1">Periode 1</string>
+    <string name="periode2">Periode 2</string>
+    <string name="periode3">Periode 3</string>
+    <string name="periode4">Periode 4</string>
+    <string name="zomervakantie">Zomervakantie</string>
+
+    <!-- ADVIES -->
+    <!-- PERIODE 1 -->
+    <string name="adviesPeriode1">Deze periode kan je 13 studiepunten halen doe je best onderschat IARCH niet</string>
+    <!-- PERIODE 2 -->
+    <string name="adviesPeriode2Positief">Vorige periode heb je niet alles gehaald, je P halen we wel volgend jaar :), Deze periode heb je twee challenge weeks plan deze periode goed.</string>
+    <string name="adviesPeriode2Negatief">Ga zo door!, Deze periode heb je twee challenge weeks plan deze periode goed.</string>
+    <!-- PERIODE 3 -->
+    <string name="adviesPeriode3Positief">Je bent geweldig we gaan voor onze P!</string>
+    <!-- PERIODE 4 -->
+    <string name="adviesPeriode4Positief">Je kan nog je P halen kom op!</string>
+
+    <!-- VAKANTIE -->
+    <string name="zKlas">Veel succes in de Z klas</string>
+    <string name="jaar2">"Veel succes in het 2e jaar"</string>
+    <string name="pGehaald">Gefeliciteerd je P in 1 jaar je bent een topper geniet van je vakantie</string>
+
+    <!-- ALGEMEEN 4 -->
+    <string name="advies40Punten">Probeer de 40 punten te halen kom op je kan het!</string>
+    <string name="advies50Punten">Probeer de 50 punten te halen kom op je kan het!</string>
+    <string name="negatiefStudieAdvies">Neem contact op met je SLB, onvoldoende studiepunten</string>
+    <string name="ragequit">Je kan niet verder met deze opleiding</string>
 </resources>

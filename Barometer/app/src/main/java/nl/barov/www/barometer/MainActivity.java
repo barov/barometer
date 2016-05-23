@@ -46,11 +46,11 @@ public class MainActivity extends AppCompatActivity {
         int week =  cal.get(Calendar.WEEK_OF_YEAR);
         int year =  cal.get(Calendar.YEAR);
 
-        if ((week >= 36) && ( week <= 46)){periode.setText("Periode 1");}
-        else if((week >= 47) && ( week <= 5)){periode.setText("Periode 2");}
-        else if((week >= 6) && ( week <= 16)){periode.setText("Periode 3");}
-        else if((week >= 17) && ( week <= 28)){periode.setText("Periode 4");}
-        else if((week >= 29) && ( week <= 35)){periode.setText("Zomervakantie");}
+        if ((week >= 36) && ( week <= 46)){periode.setText(getString(R.string.periode1));}
+        else if((week >= 47) && ( week <= 5)){periode.setText(getString(R.string.periode2));}
+        else if((week >= 6) && ( week <= 16)){periode.setText(getString(R.string.periode3));}
+        else if((week >= 17) && ( week <= 28)){periode.setText(getString(R.string.periode4));}
+        else if((week >= 29) && ( week <= 35)){periode.setText(getString(R.string.zomervakantie));}
 
         if((week >= 36 && (week <= 53))){jaar.setText(String.valueOf(year) + " / " +String.valueOf(year + 1));}
         else if ((week >= 1 && (week <= 36 ))){jaar.setText(String.valueOf(year - 1) + " / " +String.valueOf(year));}
@@ -125,26 +125,26 @@ public class MainActivity extends AppCompatActivity {
         TextView advies = (TextView) findViewById(R.id.advies);
 
         // PERIODE 1
-        if ((week >= 36) && ( week <= 46)){advies.setText("Deze periode kan je 13 studiepunten halen doe je best onderschat IARCH niet");}
+        if ((week >= 36) && ( week <= 46)){advies.setText(R.string.adviesPeriode1);}
         // PERIODE 2
-        else if((week >= 47) && ( week <= 5) && count <= 12){advies.setText("Vorige periode heb je niet alles gehaald, je P halen we wel volgend jaar :)");}
-        else if((week >= 47) && ( week <= 5) && count >= 13){advies.setText("Ga zo door!, Probeer deze periode ook alles te halen je bent een topper.");}
+        else if((week >= 47) && ( week <= 5) && count <= 12){advies.setText(R.string.adviesPeriode2Negatief);}
+        else if((week >= 47) && ( week <= 5) && count >= 13){advies.setText(R.string.adviesPeriode2Positief);}
         // PERIODE 3
-        else if((week >= 6) && ( week <= 16) && count <= 8){advies.setText("Neem contact op met je SLB, onvoldoende studiepunten");}
-        else if((week >= 6) && ( week <= 16) && count >= 9 && count <= 18){advies.setText("Probeer de 40 punten te halen kom op je kan het!");}
-        else if((week >= 6) && ( week <= 16) && count >= 19 && count <= 28){advies.setText("Probeer de 50 punten te halen kom op je kan het!");}
-        else if((week >= 6) && ( week <= 16) && count >= 29){advies.setText("Je bent geweldig we gaan voor onze P!");}
+        else if((week >= 6) && ( week <= 16) && count <= 8){advies.setText(R.string.negatiefStudieAdvies);}
+        else if((week >= 6) && ( week <= 16) && count >= 9 && count <= 18){advies.setText(R.string.advies40Punten);}
+        else if((week >= 6) && ( week <= 16) && count >= 19 && count <= 28){advies.setText(R.string.advies50Punten);}
+        else if((week >= 6) && ( week <= 16) && count >= 29){advies.setText(R.string.adviesPeriode3Positief);}
         // PERIODE 4
-        else if((week >= 17) && ( week <= 28) && count <= 22){advies.setText("Neem contact op met je SLB, onvoldoende studiepunten");}
-        else if((week >= 17) && ( week <= 28) && count >= 23 && count <= 32){advies.setText("Probeer de 40 punten te halen kom op je kan het!");}
-        else if((week >= 17) && ( week <= 28) && count >= 33 && count <= 42 ){advies.setText("Probeer de 50 punten te halen kom op je kan het!");}
-        else if((week >= 17) && ( week <= 28) && count >= 43 && count <= 59){advies.setText("Je kan nog je P halen kom op!");}
-        else if((week >= 17) && ( week <= 28) && count >= 60){advies.setText("Gefeliciteerd je P in 1 jaar je bent een topper!");}
+        else if((week >= 17) && ( week <= 28) && count <= 22){advies.setText(R.string.negatiefStudieAdvies);}
+        else if((week >= 17) && ( week <= 28) && count >= 23 && count <= 32){advies.setText(R.string.advies40Punten);}
+        else if((week >= 17) && ( week <= 28) && count >= 33 && count <= 42 ){advies.setText(R.string.advies50Punten);}
+        else if((week >= 17) && ( week <= 28) && count >= 43 && count <= 59){advies.setText(R.string.adviesPeriode4Positief);}
+        else if((week >= 17) && ( week <= 28) && count >= 60){advies.setText(R.string.pGehaald);}
         // ZOMER PERIODE
-        else if((week >= 29) && ( week <= 35) && count <= 39){advies.setText("Zoek een andere school");}
-        else if((week >= 29) && ( week <= 35) && count >= 40 && count <= 49){advies.setText("Veel succes in de Z klas");}
-        else if((week >= 29) && ( week <= 35) && count >= 50 && count <= 59){advies.setText("Veel succes in het 2e jaar");}
-        else if((week >= 29) && ( week <= 35) && count >= 60){advies.setText("Gefeliciteerd je P in 1 jaar je bent een topper geniet van je vakantie");}
+        else if((week >= 29) && ( week <= 35) && count <= 39){advies.setText(R.string.ragequit);}
+        else if((week >= 29) && ( week <= 35) && count >= 40 && count <= 49){advies.setText(R.string.zKlas);}
+        else if((week >= 29) && ( week <= 35) && count >= 50 && count <= 59){advies.setText(R.string.jaar2);}
+        else if((week >= 29) && ( week <= 35) && count >= 60){advies.setText(R.string.pGehaald);}
     }
 
     private void checkIfSignedOut() {
