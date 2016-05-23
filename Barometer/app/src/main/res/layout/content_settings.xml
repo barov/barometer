@@ -39,42 +39,44 @@
     <View xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="20dp"
         android:layout_marginTop="18dp"
         android:background="#B6B6B6" />
 
     <TextView
         android:text="Welke specialisatie kies je?"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp" />
 
     <RadioButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="optie 1"
+        android:text="@string/mt"
         android:id="@+id/radioButtonSpec1"
         android:checked="false" />
 
     <RadioButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="optie 2"
+        android:text="@string/SE"
         android:id="@+id/radioButtonSpec2"
         android:checked="false" />
 
     <RadioButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="optie 3"
+        android:text="@string/FICT"
         android:id="@+id/radioButtonSpec3"
         android:checked="false" />
 
     <RadioButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="optie 4"
+        android:text="@string/BDAM"
         android:id="@+id/radioButtonSpec4"
-        android:checked="false" />
+        android:checked="false"
+        android:layout_marginBottom="12dp"/>
 
     <Button
         android:text="Opslaan"
