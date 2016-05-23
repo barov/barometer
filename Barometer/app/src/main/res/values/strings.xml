@@ -25,14 +25,14 @@
 
     <!-- ADVIES -->
     <!-- PERIODE 1 -->
-    <string name="adviesPeriode1">Deze periode kan je 13 studiepunten halen doe je best onderschat IARCH niet</string>
+    <string name="adviesPeriode1">Deze periode kan je 13 studiepunten halen, het vak IOPR1 is een kernvak. Je moet minimaal 2 kernvakken halen dit jaar.</string>
     <!-- PERIODE 2 -->
-    <string name="adviesPeriode2Positief">Vorige periode heb je niet alles gehaald, je P halen we wel volgend jaar :), Deze periode heb je twee challenge weeks plan deze periode goed.</string>
-    <string name="adviesPeriode2Negatief">Ga zo door!, Deze periode heb je twee challenge weeks plan deze periode goed.</string>
+    <string name="adviesPeriode2Positief">Vorige periode heb je niet alles gehaald, je P halen we wel volgend jaar :) INET en IRDB zijn kernvakken deze periode.</string>
+    <string name="adviesPeriode2Negatief">Ga zo door!, INET en IRDB zijn kernvakken deze periode.</string>
     <!-- PERIODE 3 -->
-    <string name="adviesPeriode3Positief">Je bent geweldig we gaan voor onze P!</string>
+    <string name="adviesPeriode3Positief">Je bent geweldig we gaan voor onze P!, IOPR2 is een kernvak deze periode.</string>
     <!-- PERIODE 4 -->
-    <string name="adviesPeriode4Positief">Je kan nog je P halen kom op!</string>
+    <string name="adviesPeriode4Positief">Je kan nog je P halen kom op!, je specialisatievak is 10 studiepunten waard.</string>
 
     <!-- VAKANTIE -->
     <string name="zKlas">Veel succes in de Z klas</string>
