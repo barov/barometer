@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -39,13 +41,13 @@ public class SettingsActivity extends AppCompatActivity {
                 EditText editText = (EditText) findViewById(R.id.input_naam);
                 String new_name = editText.getText().toString();
                 if(new_name.equals("")) {
-                    showMessage("U heeft niets ingevuld");
+                    showSnackbar("U heeft niets ingevuld");
                 } else if (new_name.equals(gebruikersnaam)) {
-                    showMessage("U heeft dezelfde gebruikersnaam ingevuld.");
+                    showSnackbar("U heeft dezelfde gebruikersnaam ingevuld.");
                 }
                 else {
                     setSharedPrefUserName(new_name);
-                    showMessage("U gebruikersnaam is veranderd naar " + new_name + ".");
+                    showSnackbar("U gebruikersnaam is veranderd naar " + new_name + ".");
                     restartActivity();
                 }
             }
@@ -57,8 +59,11 @@ public class SettingsActivity extends AppCompatActivity {
         defaultButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                settingBackSharedPref();
+                settingBackSharedPrefSignin();
                 zetCijfersTerug();
+                String spec = getSharedPrefSpec();
+                changeIIPXXXX("IIPXXXX", spec);
+                settingBackSharedPrefSpec();
                 showMessage("U heeft de instellingen teruggezet naar de dafaults.");
                 restartApplication();
             }
@@ -101,9 +106,8 @@ public class SettingsActivity extends AppCompatActivity {
                     setSharedPrefSpec("FICT");
                     restartActivity();
                 } else {
-                    showMessage("NON");
+                    showSnackbar("NON");
                     setSpecChecked(spec);
-                    restartActivity();
                 }
             }
         });
@@ -132,11 +136,24 @@ public class SettingsActivity extends AppCompatActivity {
         t.show();
     }
 
-    private void settingBackSharedPref() {
+    private void showSnackbar(String message) {
+        CoordinatorLayout settingsLayout = (CoordinatorLayout) findViewById(R.id.SettingsCoordinatorLayout);
+        Snackbar snackbar = Snackbar.make(settingsLayout, message, Snackbar.LENGTH_LONG);
+        snackbar.show();
+    }
+
+    private void settingBackSharedPrefSignin() {
         SharedPreferences sharedPrefSignin = getSharedPreferences(getString(R.string.sign_in), MODE_PRIVATE);
         SharedPreferences.Editor editorSignin = sharedPrefSignin.edit();
         editorSignin.putString(getString(R.string.sign_in), "nee");
         editorSignin.commit();
+    }
+
+    private void settingBackSharedPrefSpec() {
+        SharedPreferences sharedPrefSpec = getSharedPreferences(getString(R.string.spec), MODE_PRIVATE);
+        SharedPreferences.Editor editorSpec = sharedPrefSpec.edit();
+        editorSpec.putString(getString(R.string.spec), "spec");
+        editorSpec.commit();
     }
 
     private void restartApplication() {
@@ -239,6 +256,8 @@ public class SettingsActivity extends AppCompatActivity {
             return "IIPFICT";
         } else if(specialisatie.equals("BDAM")) {
             return "IIPBDAM";
+        } else if (specialisatie.equals("spec")) {
+            return "IIPXXXX";
         } else {
             return "IIPXXXX";
         }
