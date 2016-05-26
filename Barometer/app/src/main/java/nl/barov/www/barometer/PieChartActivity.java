@@ -28,7 +28,6 @@ public class PieChartActivity extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pie_chart);
-        //  Log.d("tot hier", "en niet verder");
 
         mChart = (PieChart) findViewById(R.id.chart);
         mChart.setDescription("");
@@ -90,7 +89,7 @@ public class PieChartActivity extends AppCompatActivity {
 
         setData(count);
 
-
+        // CALENDER HAAL JAAR EN WEEKNUMMER VAN HET JAAR OP
         Calendar cal = Calendar.getInstance();
         int week =  cal.get(Calendar.WEEK_OF_YEAR);
         int year =  cal.get(Calendar.YEAR);
@@ -99,14 +98,14 @@ public class PieChartActivity extends AppCompatActivity {
         // CONTROLEER DE PERIODE EN STUDIEPUNTEN GEEF DAN ADVIES
         TextView advies = (TextView) findViewById(R.id.advies);
 
-        // PERIODE 1
+        // PERIODE 1 ADVIES
         if ((week >= 36) && ( week <= 46)){advies.setText(R.string.adviesPeriode1);}
 
-        // PERIODE 2
+        // PERIODE 2 ADVIES
         else if((week >= 47) && ( week <= 5) && count <= 12){advies.setText(R.string.adviesPeriode2Negatief);}
         else if((week >= 47) && ( week <= 5) && count >= 13){advies.setText(R.string.adviesPeriode2Positief);}
 
-        // PERIODE 3
+        // PERIODE 3 ADVIES
         else if((week >= 6) && ( week <= 16) && count <= 8){
             advies.setText(R.string.negatiefStudieAdvies);
             advies.setTextColor(getResources().getColor(R.color.slecht));
