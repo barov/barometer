@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         TextView showText = (TextView) findViewById(R.id.gebruiker);
         SharedPreferences sharedpref = getSharedPreferences(getString(R.string.gebruikers_naam), Context.MODE_PRIVATE);
         String name = sharedpref.getString(getString(R.string.gebruikers_naam), "");
-        showText.setText(name);
+        showText.setText(" " + name);
 
         // TOON PERIODE & JAAR
         TextView periode = (TextView) findViewById(R.id.periode);

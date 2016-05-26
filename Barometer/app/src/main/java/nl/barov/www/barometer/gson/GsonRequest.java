@@ -51,7 +51,6 @@ public class GsonRequest<T> extends Request<T> {
             String json = new String(
                     response.data,
                     HttpHeaderParser.parseCharset(response.headers));
-            Log.d(TAG, "RESPONSE " + json);
             if (mClazz != null) {
                 return Response.success(
                         gson.fromJson(json, mClazz),

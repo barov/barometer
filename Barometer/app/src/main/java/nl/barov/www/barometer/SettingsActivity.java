@@ -140,7 +140,7 @@ public class SettingsActivity extends AppCompatActivity {
 
                 } else if (rBSE.isChecked()) {
                     //TONEN VAN EEN MESSAGE
-                    showMessage(getString(R.string.spec_keuze) + getString(R.string.SE));
+                    showMessage(getString(R.string.spec_keuze) + " " + getString(R.string.SE));
 
                     //VERANDEREN VAN HUIDIGE IIPXXXX NAAR IIPSE IN DE DATABSE
                     changeIIPXXXX("IIPSE", spec);
@@ -153,7 +153,7 @@ public class SettingsActivity extends AppCompatActivity {
 
                 } else if (rBBDAM.isChecked()) {
                     //TONEN VAN EEN MESSAGE
-                    showMessage(getString(R.string.spec_keuze) + getString(R.string.BDAM));
+                    showMessage(getString(R.string.spec_keuze) + " " + getString(R.string.BDAM));
 
                     //VERANDEREN DATABASE
                     changeIIPXXXX("IIPBDAM", spec);
@@ -166,7 +166,7 @@ public class SettingsActivity extends AppCompatActivity {
 
                 } else if (rBFICT.isChecked()) {
                     //TONEN VAN EEN MESSAGE
-                    showMessage(getString(R.string.spec_keuze) + getString(R.string.FICT));
+                    showMessage(getString(R.string.spec_keuze) + " " + getString(R.string.FICT));
 
                     //DATABASE AANPASSEN NAAM IIPXXXX
                     changeIIPXXXX("IIPFICT", spec);
