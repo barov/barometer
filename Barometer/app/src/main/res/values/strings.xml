@@ -73,4 +73,5 @@
     <string name="Voldoende_V">V</string>
     <string name="Onvoldoende_O">O</string>
     <string name="wrong_insertion">De ingevoerde waarde was verkeerd.</string>
+    <string name="more_than_one">U heeft meer dan 1 specialisatie ingevuld.</string>
 </resources>

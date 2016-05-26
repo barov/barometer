@@ -10,6 +10,7 @@ import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -122,70 +123,101 @@ public class SettingsActivity extends AppCompatActivity {
                 //DE BUTTON VAN DE HUIDIGE INGESTELDE SPEC UITZETTEN
                 unSetSpec(specialisatie);
 
-                //DE SHAREDPREF OPHALEN VAN DE HUIDIG INGESTELDE SPEC
-                String spec = getSharedPrefSpec();
+                int count = countCheckedRB();
 
-                if(rBMT.isChecked()) {
-                    //TONEN VAN EEN MESSAGE
-                    showMessage(getString(R.string.spec_keuze) + getString(R.string.mt));
+                if(!(count > 1)) {
 
-                    //VERANDEREN VAN HUIDIGE IIPXXXX NAAR IIPMEDT IN DE DATABASE
-                    changeIIPXXXX("IIPMEDT", spec);
+                    //DE SHAREDPREF OPHALEN VAN DE HUIDIG INGESTELDE SPEC
+                    String spec = getSharedPrefSpec();
 
-                    //SHAREDPREF VOOR DE SPEC ZETTEN OP MT
-                    setSharedPrefSpec("MT");
+                    if (rBMT.isChecked()) {
+                        //TONEN VAN EEN MESSAGE
+                        showMessage(getString(R.string.spec_keuze) + " " + getString(R.string.mt));
 
-                    //OPNIEUW STARTEN VAN DE ACTIVITY
-                    restartActivity();
+                        //VERANDEREN VAN HUIDIGE IIPXXXX NAAR IIPMEDT IN DE DATABASE
+                        changeIIPXXXX("IIPMEDT", spec);
 
-                } else if (rBSE.isChecked()) {
-                    //TONEN VAN EEN MESSAGE
-                    showMessage(getString(R.string.spec_keuze) + " " + getString(R.string.SE));
+                        //SHAREDPREF VOOR DE SPEC ZETTEN OP MT
+                        setSharedPrefSpec("MT");
 
-                    //VERANDEREN VAN HUIDIGE IIPXXXX NAAR IIPSE IN DE DATABSE
-                    changeIIPXXXX("IIPSE", spec);
+                        //OPNIEUW STARTEN VAN DE ACTIVITY
+                        restartActivity();
 
-                    //SHAREDPREF VOOR DE SPEC ZETTEN OP SE
-                    setSharedPrefSpec("SE");
+                    } else if (rBSE.isChecked()) {
+                        //TONEN VAN EEN MESSAGE
+                        showMessage(getString(R.string.spec_keuze) + " " + getString(R.string.SE));
 
-                    //OPNIEUW STARTEN VAN DE ACTIVITY
-                    restartActivity();
+                        //VERANDEREN VAN HUIDIGE IIPXXXX NAAR IIPSE IN DE DATABSE
+                        changeIIPXXXX("IIPSE", spec);
 
-                } else if (rBBDAM.isChecked()) {
-                    //TONEN VAN EEN MESSAGE
-                    showMessage(getString(R.string.spec_keuze) + " " + getString(R.string.BDAM));
+                        //SHAREDPREF VOOR DE SPEC ZETTEN OP SE
+                        setSharedPrefSpec("SE");
 
-                    //VERANDEREN DATABASE
-                    changeIIPXXXX("IIPBDAM", spec);
+                        //OPNIEUW STARTEN VAN DE ACTIVITY
+                        restartActivity();
 
-                    //VERANDEREN VAN DE SHAREDPREF NAAR BDAM
-                    setSharedPrefSpec("BDAM");
+                    } else if (rBBDAM.isChecked()) {
+                        //TONEN VAN EEN MESSAGE
+                        showMessage(getString(R.string.spec_keuze) + " " + getString(R.string.BDAM));
 
-                    //OPNIEUW LADEN VAN DE ACTIVITY
-                    restartActivity();
+                        //VERANDEREN DATABASE
+                        changeIIPXXXX("IIPBDAM", spec);
 
-                } else if (rBFICT.isChecked()) {
-                    //TONEN VAN EEN MESSAGE
-                    showMessage(getString(R.string.spec_keuze) + " " + getString(R.string.FICT));
+                        //VERANDEREN VAN DE SHAREDPREF NAAR BDAM
+                        setSharedPrefSpec("BDAM");
 
-                    //DATABASE AANPASSEN NAAM IIPXXXX
-                    changeIIPXXXX("IIPFICT", spec);
+                        //OPNIEUW LADEN VAN DE ACTIVITY
+                        restartActivity();
 
-                    //SHAREDPREF AANPASSEN NAAR FICT
-                    setSharedPrefSpec("FICT");
+                    } else if (rBFICT.isChecked()) {
+                        //TONEN VAN EEN MESSAGE
+                        showMessage(getString(R.string.spec_keuze) + " " + getString(R.string.FICT));
 
-                    //OPNIEUW STARTEN ACTIVITY
-                    restartActivity();
+                        //DATABASE AANPASSEN NAAM IIPXXXX
+                        changeIIPXXXX("IIPFICT", spec);
 
+                        //SHAREDPREF AANPASSEN NAAR FICT
+                        setSharedPrefSpec("FICT");
+
+                        //OPNIEUW STARTEN ACTIVITY
+                        restartActivity();
+
+                    } else {
+                        //TONEN VAN EEN SNACKBAR
+                        showSnackbar(getString(R.string.samen_input));
+
+                        //HET UNCHECKEN VAN DE RADIO BUTTON WORDT ONGEDAAN GEMAAKT
+                        setSpecChecked(spec);
+                    }
                 } else {
-                    //TONEN VAN EEN SNACKBAR
-                    showSnackbar(getString(R.string.samen_input));
-
-                    //HET UNCHECKEN VAN DE RADIO BUTTON WORDT ONGEDAAN GEMAAKT
-                    setSpecChecked(spec);
+                    String message = getString(R.string.more_than_one);
+                    showMessage(message);
+                    restartActivity();
                 }
             }
         });
+    }
+
+    private int countCheckedRB() {
+        final RadioButton rBMT = (RadioButton) findViewById(R.id.radioButtonMT);
+        final RadioButton rBSE = (RadioButton) findViewById(R.id.radioButtonSE);
+        final RadioButton rBBDAM = (RadioButton) findViewById(R.id.radioButtonBDAM);
+        final RadioButton rBFICT = (RadioButton) findViewById(R.id.radioButtonFICT);
+
+        int count = 0;
+        if(rBMT.isChecked()) {
+            count++;
+        }
+        if(rBBDAM.isChecked()) {
+            count++;
+        }
+        if(rBFICT.isChecked()) {
+            count++;
+        }
+        if(rBSE.isChecked()) {
+            count++;
+        }
+        return count;
     }
 
     @Override
