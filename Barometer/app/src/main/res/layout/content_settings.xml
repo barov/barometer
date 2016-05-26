@@ -15,7 +15,7 @@
 
 
     <TextView
-        android:text="Verander je gebruikernaam hier:"
+        android:text="@string/change_name_string"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
@@ -27,7 +27,7 @@
         android:layout_height="wrap_content" />
 
     <Button
-        android:text="Opslaan"
+        android:text="@string/opslaan_button"
         android:id="@+id/save_button"
         android:layout_marginTop="10dp"
         android:padding="10dp"
@@ -79,7 +79,7 @@
         android:layout_marginBottom="12dp"/>
 
     <Button
-        android:text="Opslaan"
+        android:text="@string/opslaan_button"
         android:id="@+id/save_spec_button"
         android:layout_marginTop="10dp"
         android:padding="10dp"
@@ -96,7 +96,7 @@
         android:background="#B6B6B6" />
 
     <Button
-        android:text="Herstel Applicatie"
+        android:text="@string/default_button_string"
         android:id="@+id/setDefaults"
         android:layout_marginTop="10dp"
         android:padding="10dp"

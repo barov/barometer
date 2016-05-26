@@ -26,5 +26,6 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Developed by Tundzaj Barov &amp; Patrick Weijman"
         android:id="@+id/textView"
-        android:layout_gravity="center_horizontal" />
+        android:layout_gravity="bottom"
+        android:textColor="@color/colorPrimaryDark"/>
 </LinearLayout>

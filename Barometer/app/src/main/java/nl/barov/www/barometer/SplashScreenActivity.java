@@ -6,8 +6,10 @@ import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.animation.Animation;
@@ -42,8 +44,15 @@ public class SplashScreenActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_splash_screen);
 
-        //Request the courses
-        requestSubjects();
+       //OPVRAGEN VAN DE SHAREDPREF OM TE KIJKEN OF ER IS INGELOGD
+        final String ingelogd = getSharedPref();
+
+        //KIJKEN OF ER IS INGELOGD
+        if(!ingelogd.equals("ja")) {
+            //ALS ER NOG NIET IS INGELOGD WORDT DE JSON GELADEN (IVM HET WIJZIGEN VAN DE DATABASE MBT DE SPECIALISATIES
+            //HIERMEE WORDT VOORKOMEN DAT IIPXXXX TERUGKEERT IN DE DATABASE ALS DEZE IS GEWIJZIGD
+            requestSubjects();
+        }
 
         // ANIMATIE LOGO HSLEIDEN
         ImageView logo_hsleiden = (ImageView) findViewById(R.id.logo_hsleiden);
@@ -55,24 +64,17 @@ public class SplashScreenActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                // HAAL LOGIN SHAREDPREFENCES OP
-                SharedPreferences sharedPref = getSharedPreferences(getString(R.string.sign_in), MODE_PRIVATE);
-
-                // HAAL DE STATUS OP
-                String key_check = getString(R.string.sign_in);
-                String ingelogd = sharedPref.getString(getString(R.string.sign_in), key_check);
-                Log.d("Ingelogd", ingelogd);
-
                 // CHECK ALS GEBRUIKER INGELOGD IS
                 if (ingelogd.equals("ja")) {
-                    // UITVOEREN ALS INGELOGD
+                    // UITVOEREN ALS INGELOGD --> DAN GA JE DIRECT DOOR NAAR DE MAIN
                     Intent intent = new Intent(SplashScreenActivity.this, MainActivity.class);
                     startActivity(intent);
                 } else {
-                    // UITVOEREN ALS DE GEBRUIKER NIET INGELOGD IS
+                    // UITVOEREN ALS DE GEBRUIKER NIET INGELOGD IS --> DAN GA JE NAAR HET INLOGSCHERM
                     Intent i = new Intent(SplashScreenActivity.this, LoginActivity.class);
                     startActivity(i);
                 }
+                //FINISHEN ZODAT DE SPALSHSCREEN INTENT WORDT BEEINDIGD EN JE DEZE NIET MEER TE ZIEN KRIJGT ALS VANUIT EEN VOLGENDE INTENT OP BACK KLIKT.
                 finish();
             }
         }, SPLASH_SCREEN_TIME);
@@ -81,6 +83,7 @@ public class SplashScreenActivity extends AppCompatActivity {
     @Override
     public void onBackPressed()
     {
+        //KILLED DE HELE APPLICATIE ALS ER OP BACK WORDT GEKLIKT
         android.os.Process.killProcess(android.os.Process.myPid());
     }
 
@@ -104,7 +107,6 @@ public class SplashScreenActivity extends AppCompatActivity {
     }
 
     private void processRequestsSucces(List<Course> subjects ){
-
         // First, get the already existing if so
         DatabaseHelper dbHelper = DatabaseHelper.getHelper(this);
 
@@ -134,7 +136,7 @@ public class SplashScreenActivity extends AppCompatActivity {
 
         // iterate via "for loop"
         for (int i = 0; i < subjects.size(); i++) {
-
+            //DE NAAM, ECTS, CIJFER EN DE PERIODE  PER COURSE UIT DE DATABASE OPHALEN
             String name = String.valueOf(subjects.get(i).getName());
             String ects = String.valueOf(subjects.get(i).getEcts());
             String grade = "Voer een cijfer in";
@@ -155,15 +157,38 @@ public class SplashScreenActivity extends AppCompatActivity {
 
                 // The insert itself by the dbhelper
                 dbHelper.insert(DatabaseInfo.CourseTables.COURSE, null, values);
-
-                // Add the id to the array so we won't add it twice
-                listedCourseArray.add(name);
-                Log.d("MULAMETHOD-NEWS", listedCourseArray.toString());
             }
         }
     }
 
+    private String getSharedPref() {
+        // HAAL LOGIN SHAREDPREFENCES OP
+        SharedPreferences sharedPref = getSharedPreferences(getString(R.string.sign_in), MODE_PRIVATE);
+
+        //EEN KEY NEERZETTEN DIE ALS DEFAULT FUNGEERT
+        String key_check = getString(R.string.sign_in);
+
+        //DE WAARDE VAN DE SHAREDPREF OPHALEN
+        String ingelogd = sharedPref.getString(getString(R.string.sign_in), key_check);
+        return ingelogd;
+    }
+
     private void processRequestsError(VolleyError error){
-        Log.d("MULAMETHOD", "News JSON request failed. Internet Connection Aviable? Webserver Aviable?");
+        //DEFIENEREN VAN EEN STRING VOOR DE MESSAGE
+        String errorString = "De vakken konden niet ingeladen worden.";
+
+        //VINDEN VAN DE LAYOUT VOOR DE SNACKBAR
+        CoordinatorLayout coLayout = (CoordinatorLayout)findViewById(R.id.splashCoordinatorLayout);
+
+        //OPROEPEN VAN DE SNACKBAR OP HET MOMENT VAN EEN FOUTMELDING
+        showSnackbar(errorString, coLayout);
+    }
+
+    private void showSnackbar(String errorString, View layout) {
+        //Maakt een snackbar aan op het moment dat het inladen van de JSON fout gaat
+        Snackbar snackbar = Snackbar.make(layout, errorString, Snackbar.LENGTH_LONG);
+
+        //Snackbar wordt getoond
+        snackbar.show();
     }
 }

@@ -39,22 +39,22 @@ public class ChangeGradeDialogFragment extends DialogFragment {
                         EditText editText = (EditText) getDialog().findViewById(R.id.grade);
                         String new_grade = editText.getText().toString();
                         if(checkBoxVoldoende.isChecked() && checkBoxOnvoldoende.isChecked()) {
-                            String ongeldig = "Vul een geldig cijfer in.";
+                            String ongeldig = getString(R.string.insert_valid_grade);
                             showMessage(ongeldig);
                         }
                         else if(checkBoxVoldoende.isChecked()) {
-                            String voldoende = "Je hebt een voldoende.";
+                            String voldoende = getString(R.string.voldoende_string);
                             showMessage(voldoende);
-                            cijferInvoeren("V");
+                            cijferInvoeren(getString(R.string.Voldoende_V));
                         }
                         else if(checkBoxOnvoldoende.isChecked() && new_grade.isEmpty()) {
-                            String onvoldoende = "Je hebt een onvoldoende.";
+                            String onvoldoende = getString(R.string.onvoldoende_string);
                             showMessage(onvoldoende);
-                            cijferInvoeren("O");
+                            cijferInvoeren(getString(R.string.Onvoldoende_O));
                         }
                         else {
                             if (new_grade.length() == 0) {
-                                String message = "De invoer van het cijfer was verkeerd.";
+                                String message = getString(R.string.wrong_insertion);
                                 showMessage(message);
                             } else if (new_grade.length() == 1) {
                                 cijferInvoeren(new_grade);
@@ -62,14 +62,14 @@ public class ChangeGradeDialogFragment extends DialogFragment {
                                 if (new_grade.equals("10")) {
                                     cijferInvoeren(new_grade);
                                 } else {
-                                    String message = "De invoer van het cijfer was verkeerd.";
+                                    String message = getString(R.string.wrong_insertion);
                                     showMessage(message);
                                 }
                             } else {
                                 if (new_grade.indexOf(".") > 0) {
                                     cijferInvoeren(new_grade);
                                 } else {
-                                    String message = "De invoer van het cijfer was verkeerd.";
+                                    String message = getString(R.string.wrong_insertion);
                                     showMessage(message);
                                 }
                             }

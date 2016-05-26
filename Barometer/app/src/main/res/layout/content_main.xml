@@ -32,7 +32,7 @@ android:layout_width="wrap_content"
 android:layout_height="wrap_content">
 
 <TextView
-android:text="Hallo, "
+android:text="@string/hallo_string_main"
 android:layout_width="wrap_content"
 android:layout_height="wrap_content" />
 <TextView
@@ -45,7 +45,7 @@ android:layout_height="wrap_content" />
 
 <TextView
 android:id="@+id/schooljaar"
-android:text="Schooljaar"
+android:text="@string/year_string"
 android:layout_width="match_parent"
 android:layout_height="wrap_content" />
 
@@ -66,7 +66,7 @@ android:layout_height="wrap_content" />
 <TextView
 android:layout_marginTop="5dp"
 android:textAlignment="center"
-android:text="Studiepunten"
+android:text="@string/ects_string"
 android:layout_width="match_parent"
 android:layout_height="wrap_content" />
 
@@ -85,7 +85,7 @@ android:background="@color/colorPrimary"
 android:layout_width="match_parent"
 android:layout_height="wrap_content"
 android:layout_marginRight="5dp"
-android:text="Vakken" />
+android:text="@string/courses_string" />
 
 <Button
 android:id="@+id/overzicht"
@@ -95,7 +95,7 @@ android:textColor="@color/white"
 android:background="@color/colorPrimary"
 android:layout_width="match_parent"
 android:layout_height="wrap_content"
-android:text="Overzicht" />
+android:text="@string/overview_string" />
 </LinearLayout>
 
 <TextView

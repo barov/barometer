@@ -50,4 +50,27 @@
     <string name="FICT">Forensisch ICT</string>
     <string name="BDAM">Business Data Management</string>
     <string name="spec">spec</string>
+    <string name="nothing_added">U heeft niets ingevuld.</string>
+    <string name="same_name">U heeft dezelfde gebruikersnaam ingevuld.</string>
+    <string name="changed_name">Uw gebruikersnaam is veranderd naar</string>
+    <string name="default_set_back">U heeft de instellingen teruggezet naar de defaults.</string>
+    <string name="spec_keuze">U heeft de specialisatie ingesteld op</string>
+    <string name="samen_input">Deze specialisatie is al ingesteld.</string>
+
+    <string name="change_name_string">Verander hier je gebruikersnaam.</string>
+    <string name="opslaan_button">Opslaan</string>
+    <string name="default_button_string">Herstel gegevens applicatie</string>
+    <string name="hallo_string_main">Hallo, </string>
+    <string name="year_string">Collegejaar</string>
+    <string name="ects_string">Studiepunten</string>
+    <string name="courses_string">Vakken</string>
+    <string name="overview_string">Overzicht</string>
+    <string name="username_hint">Gebruikersnaam</string>
+    <string name="login_button_string">Login</string>
+    <string name="insert_valid_grade">Voer een geldig cijfer in.</string>
+    <string name="voldoende_string">Je hebt een voldoende.</string>
+    <string name="onvoldoende_string">Je hebt een onvoldoende.</string>
+    <string name="Voldoende_V">V</string>
+    <string name="Onvoldoende_O">O</string>
+    <string name="wrong_insertion">De ingevoerde waarde was verkeerd.</string>
 </resources>

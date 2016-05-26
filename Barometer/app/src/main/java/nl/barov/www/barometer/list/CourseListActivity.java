@@ -81,7 +81,10 @@ public class CourseListActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
+        //ALS ER OP TERUG WORDT GEKLIKT GAAT MEN ALTIJD TERUG NAAR DE MAIN
         startActivity(new Intent(this, MainActivity.class));
+
+        //FINISHING INTENT OM TE VOORKOMEN DAT EEN OUDE VERSIE VAN LIST WORDT GELADEN NADAT DEZE IS GEUPDATET
         finish();
     }
 }

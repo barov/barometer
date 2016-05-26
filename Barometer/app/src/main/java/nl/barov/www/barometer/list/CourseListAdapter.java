@@ -41,7 +41,6 @@ public class CourseListAdapter extends ArrayAdapter<Course> {
     private static class ViewHolder {
         TextView name;
         TextView code;
-
     }
 }
 
