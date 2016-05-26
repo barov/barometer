@@ -4,7 +4,6 @@ import android.database.Cursor;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.widget.TextView;
 
 import com.github.mikephil.charting.animation.Easing;
@@ -117,7 +116,7 @@ public class PieChartActivity extends AppCompatActivity {
             advies.setTextColor(getResources().getColor(R.color.goed));
         }
 
-        // PERIODE 4
+        // PERIODE 4 ADVIES
         else if((week >= 17) && ( week <= 28) && count <= 22){
             advies.setText(R.string.negatiefStudieAdvies);
             advies.setTextColor(getResources().getColor(R.color.slecht));
@@ -130,7 +129,7 @@ public class PieChartActivity extends AppCompatActivity {
             advies.setTextColor(getResources().getColor(R.color.goed));
         }
 
-        // ZOMER PERIODE
+        // ZOMER PERIODE ADVIES
         else if((week >= 29) && ( week <= 35) && count <= 39){
             advies.setText(R.string.ragequit);
             advies.setTextColor(getResources().getColor(R.color.slecht));
@@ -175,7 +174,6 @@ public class PieChartActivity extends AppCompatActivity {
         PieData data = new PieData(xValues, dataSet);
         mChart.setData(data);        // bind je dataset aan de chart.
         mChart.invalidate();        // Aanroepen van een volledige redraw
-        Log.d("aantal =", ""+currentEcts);
     }
 }
 

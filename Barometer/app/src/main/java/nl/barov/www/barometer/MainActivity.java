@@ -24,12 +24,10 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         checkIfSignedOut();
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
         Button contentButton = (Button) findViewById(R.id.content_button);
 
         // HAAL SHAREDPREFENCES OP EN SET NAAM
@@ -42,16 +40,19 @@ public class MainActivity extends AppCompatActivity {
         TextView periode = (TextView) findViewById(R.id.periode);
         TextView jaar = (TextView) findViewById(R.id.schooljaar);
 
+        // CALENDER HAAL JAAR EN WEEKNUMMER VAN HET JAAR OP
         Calendar cal = Calendar.getInstance();
         int week =  cal.get(Calendar.WEEK_OF_YEAR);
         int year =  cal.get(Calendar.YEAR);
 
+        // SET PERIODE CHECK IN WELKE WEEKNUMMER DE APPLICATIE ZIT
         if ((week >= 36) && ( week <= 46)){periode.setText(getString(R.string.periode1));}
         else if((week >= 47) && ( week <= 5)){periode.setText(getString(R.string.periode2));}
         else if((week >= 6) && ( week <= 16)){periode.setText(getString(R.string.periode3));}
         else if((week >= 17) && ( week <= 28)){periode.setText(getString(R.string.periode4));}
         else if((week >= 29) && ( week <= 35)){periode.setText(getString(R.string.zomervakantie));}
 
+        // SET SCHOOLJAAR VAN STUDENT ALS WEEK 37 BEGINT VERANDER SCHOOLJAAR
         if((week >= 36 && (week <= 53))){jaar.setText(String.valueOf(year) + " / " +String.valueOf(year + 1));}
         else if ((week >= 1 && (week <= 36 ))){jaar.setText(String.valueOf(year - 1) + " / " +String.valueOf(year));}
 
@@ -183,7 +184,7 @@ public class MainActivity extends AppCompatActivity {
     private void checkIfSignedOut() {
         SharedPreferences sharedPref = getSharedPreferences(getString(R.string.sign_in), MODE_PRIVATE);
 
-        // HAAL DE STATUS OP
+        // HAAL DE STATUS OP ALS GEBRUIKER INGELOGD IS
         String key_check = getString(R.string.sign_in);
         String ingelogd = sharedPref.getString(getString(R.string.sign_in), key_check);
         if(ingelogd.equals("nee")) {
@@ -199,19 +200,15 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
+        // GA NAAR DE SETTINGS ACTIVITY
         if (id == R.id.action_settings) {
             Intent i = new Intent(MainActivity.this, SettingsActivity.class);
             startActivity(i);
