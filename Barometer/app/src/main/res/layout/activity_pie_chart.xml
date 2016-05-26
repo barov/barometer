@@ -18,8 +18,9 @@
         android:layout_marginLeft="50dp"
         android:layout_marginRight="50dp"
         android:id="@+id/advies"
+        android:textStyle="bold"
+        android:textColor="@color/colorPrimaryDark"
         android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum at."
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
-
 </LinearLayout>

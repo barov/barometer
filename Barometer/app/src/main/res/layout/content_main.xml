@@ -101,6 +101,8 @@ android:text="Overzicht" />
 <TextView
 android:layout_marginTop="20dp"
 android:id="@+id/advies"
+android:textColor="@color/colorPrimaryDark"
+android:textStyle="bold"
 android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum at."
 android:layout_width="wrap_content"
 android:layout_height="wrap_content" />

@@ -4,4 +4,7 @@
     <color name="colorPrimaryDark">#23114c</color>
     <color name="colorAccent">#000000</color>
     <color name="white">#FFFFFF</color>
+    <color name="goed">#62A440</color>
+    <color name="slecht">#E8110C</color>
+    <color name="neutral">#E8110C</color>
 </resources>
