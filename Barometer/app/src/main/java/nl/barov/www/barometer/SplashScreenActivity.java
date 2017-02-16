@@ -32,8 +32,6 @@ import nl.barov.www.barometer.models.Course;
 
 public class SplashScreenActivity extends AppCompatActivity {
 
-    private static int SPLASH_SCREEN_TIME = 3000;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,6 +59,7 @@ public class SplashScreenActivity extends AppCompatActivity {
         logo_hsleiden.startAnimation(myFadeInAnimation_1500);
 
         // CONTROLEER ALS DE GEBRUIKER INGELOGD IS
+        int SPLASH_SCREEN_TIME = 3000;
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
