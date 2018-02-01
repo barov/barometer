@@ -11,12 +11,12 @@ import android.provider.BaseColumns;
  * Created by Tuncay on 3/05/2016.
  */
 public class DatabaseHelper extends SQLiteOpenHelper {
-    public static SQLiteDatabase mSQLDB;
+    private static SQLiteDatabase mSQLDB;
     private static DatabaseHelper mInstance;            // SINGLETON TRUC
-    public static final String dbName = "barometer.db";    // Naam van je DB
-    public static final int dbVersion = 1;                // Versie nr van je db.
+    private static final String dbName = "barometer.db";    // Naam van je DB
+    private static final int dbVersion = 1;                // Versie nr van je db.
 
-    public DatabaseHelper(Context ctx) {                // De constructor doet niet veel meer dan ...
+    private DatabaseHelper(Context ctx) {                // De constructor doet niet veel meer dan ...
         super(ctx, dbName, null, dbVersion);            // … de super constructor aan te roepen.
     }
 

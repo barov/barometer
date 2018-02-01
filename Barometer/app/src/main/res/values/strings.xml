@@ -1,18 +1,14 @@
 <resources>
     <string name="app_name">Barometer</string>
-    <string name="action_settings">Settings</string>
     <string name="title_activity_splash_screen">Barometer</string>
     <string name="sign_in">sing_in</string>
     <string name="title_activity_login">LoginActivity</string>
-    <string name="gebruikers_naam">gebruikersnaam</string>
+    <string name="gebruikers_naam">Gebruikersnaam</string>
     <string name="title_course_list_activity">Vakken</string>
-    <string name="title_activity_instellingen">Instellingen</string>
     <string name="oke">Wijzigen</string>
     <string name="cancel">Cancel</string>
-    <string name="grade_hint">Cijfer</string>
     <string name="cijfer_message">Voor het nieuwe cijfer in:</string>
     <string name="title_activity_settings">Instellingen</string>
-    <string name="setting_restore_defaults">Herstel Instellingen</string>
     <string name="Voldoende">Voldoende</string>
     <string name="Onvoldoende">Onvoldoende</string>
 

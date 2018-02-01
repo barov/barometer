@@ -14,7 +14,6 @@ import android.widget.Toast;
 public class LoginActivity extends AppCompatActivity {
 
     private EditText inputNaam;
-    private Button submitButton;
     private String mNaam;
 
     @Override
@@ -26,7 +25,7 @@ public class LoginActivity extends AppCompatActivity {
 
         //DEFINEN VAN EEN EDITTEXT EN BUTTON
         inputNaam = (EditText) findViewById(R.id.input_naam);
-        submitButton = (Button) findViewById(R.id.submit_button);
+        Button submitButton = (Button) findViewById(R.id.submit_button);
 
         //UIT TE VOEREN CODE OP HET MOMENT DAT DE BUTTON WORDT AANGEKLIKT
         submitButton.setOnClickListener(new View.OnClickListener() {
@@ -36,7 +35,7 @@ public class LoginActivity extends AppCompatActivity {
                 SharedPreferences sharedPrefSignin = getSharedPreferences(getString(R.string.sign_in), MODE_PRIVATE);
                 SharedPreferences.Editor editorSignin = sharedPrefSignin.edit();
                 editorSignin.putString(getString(R.string.sign_in), "ja");
-                editorSignin.commit();
+                editorSignin.apply();
 
                 mNaam = inputNaam.getText().toString();
 
@@ -44,7 +43,7 @@ public class LoginActivity extends AppCompatActivity {
                 SharedPreferences sharedPrefCode = getSharedPreferences(getString(R.string.gebruikers_naam), MODE_PRIVATE);
                 SharedPreferences.Editor editorSharedPrefCode = sharedPrefCode.edit();
                 editorSharedPrefCode.putString(getString(R.string.gebruikers_naam), mNaam);
-                editorSharedPrefCode.commit();
+                editorSharedPrefCode.apply();
 
                 //TONEN VAN EEN TOAST
                 showToast(mNaam);

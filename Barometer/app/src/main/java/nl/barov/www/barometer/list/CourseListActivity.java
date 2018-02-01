@@ -22,8 +22,6 @@ import nl.barov.www.barometer.models.Course;
 
 public class CourseListActivity extends AppCompatActivity {
 
-    private ListView mListView;
-    private CourseListAdapter mAdapter;
     private List<Course> courseModels = new ArrayList<>();    // NEED A METHOD TO FILL THIS. RETRIEVE THE DATA FROM JSON
 
     @Override
@@ -33,7 +31,7 @@ public class CourseListActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        mListView = (ListView) findViewById(R.id.my_list_view);
+        ListView mListView = (ListView) findViewById(R.id.my_list_view);
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                                              @Override
                                              public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
@@ -75,7 +73,7 @@ public class CourseListActivity extends AppCompatActivity {
             rsCourse.moveToNext();
         }
 
-        mAdapter = new CourseListAdapter(CourseListActivity.this, 0, courseModels);
+        CourseListAdapter mAdapter = new CourseListAdapter(CourseListActivity.this, 0, courseModels);
         mListView.setAdapter(mAdapter);
     }
 
