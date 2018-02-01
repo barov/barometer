@@ -32,8 +32,6 @@ import nl.barov.www.barometer.models.Course;
 
 public class SplashScreenActivity extends AppCompatActivity {
 
-    private static int SPLASH_SCREEN_TIME = 3000;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,6 +59,7 @@ public class SplashScreenActivity extends AppCompatActivity {
         logo_hsleiden.startAnimation(myFadeInAnimation_1500);
 
         // CONTROLEER ALS DE GEBRUIKER INGELOGD IS
+        int SPLASH_SCREEN_TIME = 3000;
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -117,17 +116,12 @@ public class SplashScreenActivity extends AppCompatActivity {
         // Set the cursor (items fetcher)
         Cursor rsCourse = dbHelper.query(DatabaseInfo.CourseTables.COURSE, new String[]{"*"}, null, null, null, null, null);
 
-        // Get the amount of return
-        String array[] = new String[rsCourse.getCount()];
-        int j = 0;
-
         rsCourse.moveToFirst();
 
         // For all the items we get in the return
         while (!rsCourse.isAfterLast()) {
             String name       = rsCourse.getString(rsCourse.getColumnIndex("name"));
             listedCourseArray.add(name);
-            j++;
             rsCourse.moveToNext();
         }
 
@@ -169,8 +163,7 @@ public class SplashScreenActivity extends AppCompatActivity {
         String key_check = getString(R.string.sign_in);
 
         //DE WAARDE VAN DE SHAREDPREF OPHALEN
-        String ingelogd = sharedPref.getString(getString(R.string.sign_in), key_check);
-        return ingelogd;
+        return sharedPref.getString(getString(R.string.sign_in), key_check);
     }
 
     private void processRequestsError(VolleyError error){

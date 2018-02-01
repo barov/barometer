@@ -15,7 +15,7 @@ public class VolleyHelper {
     private ImageLoader mImageLoader;
     private static Context mCtx;
 
-    public VolleyHelper(Context context) {
+    private VolleyHelper(Context context) {
         mCtx = context;
         mRequestQueue = getRequestQueue();
 
@@ -38,7 +38,7 @@ public class VolleyHelper {
         return mInstance;
     }
 
-    public RequestQueue getRequestQueue() {
+    private RequestQueue getRequestQueue() {
         if (mRequestQueue == null) {
             // getApplicationContext() is key, it keeps you from leaking the
             // Activity or BroadcastReceiver if someone passes one in.

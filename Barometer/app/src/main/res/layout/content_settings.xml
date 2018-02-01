@@ -19,22 +19,27 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
-    <EditText
-        android:id="@+id/input_naam"
-        android:hint="Gebruikersnaam"
-        android:layout_marginTop="10dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/input_naam"
+            android:hint="@string/gebruikers_naam"
+            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </android.support.design.widget.TextInputLayout>
 
     <Button
         android:text="@string/opslaan_button"
         android:id="@+id/save_button"
         android:layout_marginTop="10dp"
         android:padding="10dp"
-        android:textColor="@color/white"
-        android:background="@color/colorPrimary"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        style="@style/Base.Widget.AppCompat.Button.Colored"/>
 
     <View xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
@@ -83,10 +88,9 @@
         android:id="@+id/save_spec_button"
         android:layout_marginTop="10dp"
         android:padding="10dp"
-        android:textColor="@color/white"
-        android:background="@color/colorPrimary"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        style="@style/Base.Widget.AppCompat.Button.Colored"/>
 
     <View xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
@@ -99,9 +103,8 @@
         android:text="@string/default_button_string"
         android:id="@+id/setDefaults"
         android:layout_marginTop="10dp"
-        android:padding="10dp"
-        android:textColor="@color/white"
-        android:background="@color/colorPrimary"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/Base.Widget.AppCompat.Button.Colored"/>
+
 </LinearLayout>

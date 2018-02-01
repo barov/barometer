@@ -1,7 +1,5 @@
 package nl.barov.www.barometer.gson;
 
-import android.util.Log;
-
 import com.android.volley.AuthFailureError;
 import com.android.volley.NetworkResponse;
 import com.android.volley.ParseError;
@@ -21,7 +19,6 @@ public class GsonRequest<T> extends Request<T> {
     private final Map<String, String> headers;
     private final Response.Listener<T> listener;
     private final Type mType;
-    private final String TAG = "GsonRequest<T>";
 
     /** Make a GET request and return a parsed object from JSON.
      * @param url URL of the request to make
@@ -60,9 +57,7 @@ public class GsonRequest<T> extends Request<T> {
                         gson.fromJson(json, mType),
                         HttpHeaderParser.parseCacheHeaders(response));
             }
-        } catch (UnsupportedEncodingException e) {
-            return Response.error(new ParseError(e));
-        } catch (JsonSyntaxException e) {
+        } catch (UnsupportedEncodingException | JsonSyntaxException e) {
             return Response.error(new ParseError(e));
         }
     }

@@ -16,9 +16,6 @@ import android.widget.Toast;
 import nl.barov.www.barometer.database.DatabaseHelper;
 import nl.barov.www.barometer.database.DatabaseInfo;
 
-/**
- * Created by Patrick on 13/05/16.
- */
 public class ChangeGradeDialogFragment extends DialogFragment {
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {

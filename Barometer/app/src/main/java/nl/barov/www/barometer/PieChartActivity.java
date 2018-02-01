@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
+
 import com.github.mikephil.charting.animation.Easing;
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.data.Entry;
@@ -19,7 +20,6 @@ import nl.barov.www.barometer.database.DatabaseInfo;
 
 public class PieChartActivity extends AppCompatActivity {
     private PieChart mChart;
-    public static final int MAX_ECTS = 60;
     public static int currentEcts = 0;
 
     @Override
@@ -27,7 +27,7 @@ public class PieChartActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pie_chart);
 
-        mChart = (PieChart) findViewById(R.id.chart);
+        mChart = findViewById(R.id.chart);
         mChart.setDescription("");
         mChart.setTouchEnabled(false);
         mChart.setDrawSliceText(true);

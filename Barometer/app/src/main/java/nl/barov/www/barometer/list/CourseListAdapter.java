@@ -1,6 +1,7 @@
 package nl.barov.www.barometer.list;
 
 import android.content.Context;
+import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,12 +15,13 @@ import nl.barov.www.barometer.models.Course;
 
 public class CourseListAdapter extends ArrayAdapter<Course> {
 
-    public CourseListAdapter(Context context, int resource, List<Course> objects){
+    CourseListAdapter(Context context, int resource, List<Course> objects){
         super(context, resource, objects);
     }
 
+    @NonNull
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(int position, View convertView, @NonNull ViewGroup parent) {
         ViewHolder vh;
 
         if (convertView == null ) {
@@ -33,8 +35,10 @@ public class CourseListAdapter extends ArrayAdapter<Course> {
             vh = (ViewHolder) convertView.getTag();
         }
         Course cm = getItem(position);
-        vh.name.setText(cm.name);
-        vh.code.setText(cm.grade);
+        if (cm != null) {
+            vh.name.setText(cm.name);
+            vh.code.setText(cm.grade);
+        }
         return convertView;
     }
 

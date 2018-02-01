@@ -10,7 +10,6 @@ import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -240,7 +239,7 @@ public class SettingsActivity extends AppCompatActivity {
         SharedPreferences sharedPref = getSharedPreferences(getString(R.string.gebruikers_naam), MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
         editor.putString(getString(R.string.gebruikers_naam), new_name);
-        editor.commit();
+        editor.apply();
     }
 
     private void showMessage(String message) {
@@ -263,7 +262,7 @@ public class SettingsActivity extends AppCompatActivity {
         SharedPreferences sharedPrefSignin = getSharedPreferences(getString(R.string.sign_in), MODE_PRIVATE);
         SharedPreferences.Editor editorSignin = sharedPrefSignin.edit();
         editorSignin.putString(getString(R.string.sign_in), "nee");
-        editorSignin.commit();
+        editorSignin.apply();
     }
 
     private void settingBackSharedPrefSpec() {
@@ -271,7 +270,7 @@ public class SettingsActivity extends AppCompatActivity {
         SharedPreferences sharedPrefSpec = getSharedPreferences(getString(R.string.spec), MODE_PRIVATE);
         SharedPreferences.Editor editorSpec = sharedPrefSpec.edit();
         editorSpec.putString(getString(R.string.spec), "spec");
-        editorSpec.commit();
+        editorSpec.apply();
     }
 
     private void restartApplication() {
@@ -313,7 +312,7 @@ public class SettingsActivity extends AppCompatActivity {
         SharedPreferences sharedPrefSpec = getSharedPreferences(getString(R.string.spec), MODE_PRIVATE);
         SharedPreferences.Editor editorSpec = sharedPrefSpec.edit();
         editorSpec.putString(getString(R.string.spec), specialisatie);
-        editorSpec.commit();
+        editorSpec.apply();
     }
 
     private String getSharedPrefSpec() {
